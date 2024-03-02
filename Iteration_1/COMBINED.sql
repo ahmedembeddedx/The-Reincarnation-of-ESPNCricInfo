@@ -2,89 +2,101 @@
 -- Write Variable Names in this format '_variable_name'
 -- Make sure to run the query on both MySQL Server and MsSQL Server on SQLite
 
--- Things to do
--- Add Constraints to the tables
+DROP DATABASE IF EXISTS ESPNCricInfo;
 
-USE Project;
+CREATE DATABASE ESPNCricInfo;
+USE ESPNCricInfo;
 
-CREATE TABLE ActorOnTheScene
+CREATE TABLE UserData
 (
     _UserName VARCHAR(30),
-    _Password VARCHAR(30),
-    _Name VARCHAR(30),
+    _Password VARCHAR(30) NOT NULL,
+    _Name VARCHAR(30) NOT NULL,
     _Country VARCHAR(30),
     _PhoneNumber VARCHAR(30),
-    _Email VARCHAR(30),
-    _IsAdmin bit,
+    _Email VARCHAR(30) NOT NULL,    
+    _IsAdmin BIT NOT NULL,
     PRIMARY KEY (_UserName)
 );
 
-CREATE TABLE Ground
+CREATE TABLE GroundData
 (
-    _GroundID INT,
-    _Location VARCHAR(40),
-    _Country VARCHAR(30),
+    _GroundID INT AUTO_INCREMENT,
+    _Location VARCHAR(40) NOT NULL,
+    _Country VARCHAR(30) NOT NULL,
+    _AverageFirstInningsScore INT,
+    _AverageSecondInningsScore INT,
+    _AvgSwingDegrees FLOAT,
+    _PitchRating FLOAT NOT NULL,  
     PRIMARY KEY (_GroundID)
+);
+
+CREATE TABLE RolesData
+(
+    _RoleID INT AUTO_INCREMENT,
+    _RoleName VARCHAR(30) NOT NULL,
+    PRIMARY KEY (_RoleID)
 );
 
 CREATE TABLE FixtureData
 (
-    _FixtureID INT,
-    _Team1ID INT,
-    _Team2ID INT,
-    _Date DATETIME,
+    _FixtureID INT AUTO_INCREMENT,
+    _Team1ID INT NOT NULL,
+    _Team2ID INT NOT NULL,
+    _Date DATETIME NOT NULL,
     _VenueID INT,
     PRIMARY KEY (_FixtureID),
-    FOREIGN KEY (_VenueID) REFERENCES Ground(_GroundID) on delete set null on update cascade
+    FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE SeriesData
 (
-    _SeriesID INT,
-    _Team1ID INT,
-    _Team2ID INT,
+    _SeriesID INT AUTO_INCREMENT,
+    _Team1ID INT NOT NULL,
+    _Team2ID INT NOT NULL,
     _Date DATETIME,
     _VenueID INT,
     PRIMARY KEY (_SeriesID),
-    FOREIGN KEY (_VenueID) REFERENCES Ground(_GroundID) on delete no action on update no action
+    FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE NewsData
 (
-    _Text VARCHAR(200),
+    _Headline VARCHAR(100) NOT NULL,
+    _Text VARCHAR(200) NOT NULL,
     _UserID VARCHAR(30),
-    _Date DATETIME,
+    _Date DATETIME NOT NULL,
     PRIMARY KEY (_Date),
-    FOREIGN KEY (_UserID) REFERENCES ActorOnTheScene(_UserName) on delete cascade on update cascade
+    FOREIGN KEY (_UserID) REFERENCES UserData(_UserName) ON DELETE SET NULL
 );
 
 CREATE TABLE TeamData
 (    
-    _Name VARCHAR(30),
-    _TeamID INT,
+    _Name VARCHAR(30) NOT NULL,
+    _TeamID INT AUTO_INCREMENT,
     _HomeGroundID INT,
-    _Abbreviation VARCHAR(3),
+    _Abbreviation VARCHAR(3) NOT NULL,
     _Nick VARCHAR(30),
     _UpcomingFixtureID INT,
     _UpcomingSeriesID INT,
-    _Wins INT,
-    _Draws INT,
-    _Loss INT,
-    _RankingPoints INT,
+    _Wins INT NOT NULL,
+    _Draws INT NOT NULL,
+    _Loss INT NOT NULL,
+    _RankingPoints INT NOT NULL,
     PRIMARY KEY (_TeamID),
-    FOREIGN KEY (_UpcomingFixtureID) REFERENCES FixtureData(_FixtureID) on delete set null on update no action,
-    FOREIGN KEY (_UpcomingSeriesID) REFERENCES SeriesData(_SeriesID) on delete set null on update no action,
-    FOREIGN KEY (_HomeGroundID) REFERENCES Ground(_GroundID) on delete set null on update no action
+    FOREIGN KEY (_UpcomingFixtureID) REFERENCES FixtureData(_FixtureID) ON DELETE SET NULL,
+    FOREIGN KEY (_UpcomingSeriesID) REFERENCES SeriesData(_SeriesID) ON DELETE SET NULL,
+    FOREIGN KEY (_HomeGroundID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE PlayerData
 (
-    _PlayerID INT,
-    _TeamID INT,
-    _Name VARCHAR(20),
-    _Age INT,
-    _Country VARCHAR(30),
-    _Role VARCHAR(30),
+    _PlayerID INT AUTO_INCREMENT,
+    _TeamID INT NOT NULL,
+    _Name VARCHAR(20) NOT NULL,
+    _Age INT NOT NULL,
+    _Country VARCHAR(30) NOT NULL,
+    _RoleID INT,
     -- Batting Stats
     _BatAvg FLOAT,
     _BattingStyle VARCHAR(30),
@@ -109,152 +121,76 @@ CREATE TABLE PlayerData
     _LastMatchID INT,
 
     PRIMARY KEY (_PlayerID),
-    FOREIGN KEY (_LastMatchID) REFERENCES FixtureData(_FixtureID) on delete set null on update no action,
-    FOREIGN KEY (_TeamID) REFERENCES TeamData(_TeamID) on delete set null on update no action
+    FOREIGN KEY (_LastMatchID) REFERENCES FixtureData(_FixtureID) ON DELETE SET NULL,
+    FOREIGN KEY (_TeamID) REFERENCES TeamData(_TeamID) ON DELETE CASCADE,
+    FOREIGN KEY (_RoleID) REFERENCES RolesData(_RoleID) ON DELETE SET NULL
 );
 
---ACTOR ON the SCENE
-ALTER TABLE ActorOnTheScene
-ALTER COLUMN _Password VARCHAR(30) NOT NULL;
 
-ALTER TABLE ActorOnTheScene
-ALTER COLUMN _Name VARCHAR(30) NOT NULL;
+-- CONSTRAINTS
 
-ALTER TABLE ActorOnTheScene
-ALTER COLUMN _Country VARCHAR(30) NOT NULL;
-
-ALTER TABLE ActorOnTheScene
+--USER DATA--
+ALTER TABLE UserData
 ADD CONSTRAINT CHK_IsAdmin CHECK (_IsAdmin IN (0, 1));
-
---GroundTable--
-ALTER TABLE Ground
-ALTER COLUMN _Location VARCHAR(40) NOT NULL;
-
-ALTER TABLE Ground
-ALTER COLUMN _Country VARCHAR(30) NOT NULL;
 
 --FixtureData--
 ALTER TABLE FixtureData
-ALTER COLUMN _Team1ID INT NOT NULL;
-
-ALTER TABLE FixtureData
-ALTER COLUMN _Team2ID INT NOT NULL;
-
-ALTER TABLE FixtureData
 ADD CONSTRAINT team1team2unique UNIQUE (_Team1ID,_Team2ID);
-
-ALTER TABLE FixtureData
-ALTER COLUMN _VenueID INT NOT NULL;
 
 --SeriesData Table--
 ALTER TABLE SeriesData
-ALTER COLUMN _Team1ID INT NOT NULL;
-
-ALTER TABLE SeriesData
-ALTER COLUMN _Team2ID INT NOT NULL;
-
-ALTER TABLE SeriesData
 ADD CONSTRAINT steam1team2unique UNIQUE (_Team1ID,_Team2ID);
 
-ALTER TABLE SeriesData
-ALTER COLUMN _Date DATETIME NOT NULL;
-
-ALTER TABLE SeriesData
-ALTER COLUMN _VenueID INT NOT NULL;
-
 --TeamData Table--
-ALTER TABLE TeamData
-ALTER COLUMN _Name VARCHAR(30) NOT NULL;
-
-ALTER TABLE TeamData
-ALTER COLUMN _HomeGroundID INT NOT NULL;
-
-ALTER TABLE TeamData
-ADD CONSTRAINT homegroundUnique UNIQUE (_HomeGroundID);
-
-ALTER TABLE TeamData
-ALTER COLUMN _Wins INT NOT NULL;
-
-ALTER TABLE TeamData
-ALTER COLUMN _Draws INT NOT NULL;
-
-ALTER TABLE TeamData
-ALTER COLUMN _Loss INT NOT NULL;
-
-ALTER TABLE TeamData
-ALTER COLUMN _RankingPoints INT NOT NULL;
+ALTER TABLE	TeamData
+ADD CONSTRAINT check_negWins CHECK (_Wins>=0);
 
 ALTER TABLE	TeamData
-ADD CONSTRAINT check_negWins CHECK (_Wins>=0 or _Wins is null)
+ADD CONSTRAINT check_negdraws CHECK (_Draws>=0);
 
 ALTER TABLE	TeamData
-ADD CONSTRAINT check_negdraws CHECK (_Draws>=0 or _Draws is null)
+ADD CONSTRAINT check_negloss CHECK (_Loss>=0);
 
 ALTER TABLE	TeamData
-ADD CONSTRAINT check_negloss CHECK (_Loss>=0 or _Loss is null)
-
-ALTER TABLE	TeamData
-ADD CONSTRAINT check_negpoints CHECK (_RankingPoints>=0 or _RankingPoints is null)
+ADD CONSTRAINT check_negpoints CHECK (_RankingPoints>=0);
 
 --PlayerData table--
-ALTER TABLE PlayerData
-ALTER COLUMN _TeamID INT NOT NULL;
 
 ALTER TABLE PlayerData
-ALTER COLUMN _Name VARCHAR(20) NOT NULL;
+ADD CONSTRAINT CHK_age_non_negative CHECK (_Age >= 12);
 
 ALTER TABLE PlayerData
-ALTER COLUMN _Country VARCHAR(30) NOT NULL;
+ADD CONSTRAINT CHK_BatAvg_non_negative CHECK (_BatAvg >= 0 OR _BatAvg IS NULL);
 
 ALTER TABLE PlayerData
-ALTER COLUMN _Role VARCHAR(30) NOT NULL;
+ADD CONSTRAINT CHK_BatRun_non_negative CHECK (_BatRuns >= 0 OR _BatRuns IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_age_non_negative CHECK (_Age >= 15);
+ADD CONSTRAINT CHK_Batinnings_non_negative CHECK (_BatInnings >= 0 OR _BatInnings IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_BatAvg_non_negative CHECK (_BatAvg >= 0 or _BatAvg is null);
+ADD CONSTRAINT CHK_BatSR_non_negative CHECK (_BatSR >= 0 AND _BatSR<=600 OR _BatSR IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_BatRun_non_negative CHECK (_BatRuns >= 0 or _BatRuns is null);
+ADD CONSTRAINT CHK_hundreds_non_negative CHECK (_Hundreds >= 0 OR _Hundreds IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_Batinnings_non_negative CHECK (_BatInnings >= 0 or _BatInnings is null);
+ADD CONSTRAINT CHK_fifties_non_negative CHECK (_Fifties >= 0 OR _Fifties IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_BatSR_non_negative CHECK (_BatSR >= 0 or _BatSR is null);
-
-
-ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_hundreds_non_negative CHECK (_Hundreds >= 0 or _Hundreds is null);
+ADD CONSTRAINT CHK_bowlavg_non_negative CHECK (_BowlAvg >= 0 OR _BowlAvg IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_fifties_non_negative CHECK (_Fifties >= 0 or _Fifties is null);
+ADD CONSTRAINT CHK_wickets_non_negative CHECK (_Wickets >= 0 OR _Wickets IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_bowlavg_non_negative CHECK (_BowlAvg >= 0 or _BowlAvg is null);
+ADD CONSTRAINT CHK_BlowRuns_non_negative CHECK (_BowlRuns >= 0 OR _BowlRuns IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_wickets_non_negative CHECK (_Wickets >= 0 or _Wickets is null);
+ADD CONSTRAINT CHK_Bowlinnings_non_negative CHECK (_BowlInnings >= 0 OR _BowlInnings IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_BlowRuns_non_negative CHECK (_BowlRuns >= 0 or _BowlRuns is null);
+ADD CONSTRAINT CHK_FiveW_non_negative CHECK (_FiveWickets >= 0 OR _FiveWickets IS NULL);
 
 ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_Bowlinnings_non_negative CHECK (_BowlInnings >= 0 or _BowlInnings is null);
-
-ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_FiveW_non_negative CHECK (_FiveWickets >= 0 or _FiveWickets is null);
-
-ALTER TABLE PlayerData
-ADD CONSTRAINT CHK_TenW_non_negative CHECK (_TenWickets >= 0 or _TenWickets is null);
-
-
-
-
-
-
-
-
-
-
+ADD CONSTRAINT CHK_TenW_non_negative CHECK (_TenWickets >= 0 OR _TenWickets IS NULL);
