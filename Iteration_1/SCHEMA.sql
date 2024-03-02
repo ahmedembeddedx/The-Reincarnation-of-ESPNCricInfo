@@ -2,17 +2,11 @@
 -- Write Variable Names in this format '_variable_name'
 -- Make sure to run the query on both MySQL Server and MsSQL Server on SQLite
 
--- Things to do
--- Add Constraints to the tables
-
-
-
 DROP DATABASE IF EXISTS ESPNCricInfo;
 CREATE DATABASE ESPNCricInfo;
-
 USE ESPNCricInfo;
 
-CREATE TABLE ActorOnTheScene
+CREATE TABLE UserData
 (
     _UserName VARCHAR(30),
     _Password VARCHAR(30),
@@ -20,16 +14,27 @@ CREATE TABLE ActorOnTheScene
     _Country VARCHAR(30),
     _PhoneNumber VARCHAR(30),
     _Email VARCHAR(30),
-    _IsAdmin BOOL,
+    _IsAdmin BIT,
     PRIMARY KEY (_UserName)
 );
 
-CREATE TABLE Ground
+CREATE TABLE GroundData
 (
     _GroundID INT,
     _Location VARCHAR(40),
     _Country VARCHAR(30),
+    _AverageFirstInningsScore INT,
+    _AverageSecondInningsScore INT,
+    _AvgSwingDegrees FLOAT,
+    _PitchRating FLOAT,    
     PRIMARY KEY (_GroundID)
+);
+
+CREATE TABLE RolesData
+(
+    _RoleID INT,
+    _RoleName VARCHAR(30),
+    PRIMARY KEY (_RoleID)
 );
 
 CREATE TABLE FixtureData
@@ -40,7 +45,7 @@ CREATE TABLE FixtureData
     _Date DATETIME,
     _VenueID INT,
     PRIMARY KEY (_FixtureID),
-    FOREIGN KEY (_VenueID) REFERENCES Ground(_GroundID)
+    FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE SeriesData
@@ -51,7 +56,7 @@ CREATE TABLE SeriesData
     _Date DATETIME,
     _VenueID INT,
     PRIMARY KEY (_SeriesID),
-    FOREIGN KEY (_VenueID) REFERENCES Ground(_GroundID)
+    FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE NewsData
@@ -60,7 +65,7 @@ CREATE TABLE NewsData
     _UserID VARCHAR(30),
     _Date DATETIME,
     PRIMARY KEY (_Date),
-    FOREIGN KEY (_UserID) REFERENCES ActorOnTheScene(_UserName)
+    FOREIGN KEY (_UserID) REFERENCES UserData(_UserName) ON DELETE SET NULL
 );
 
 CREATE TABLE TeamData
@@ -77,9 +82,9 @@ CREATE TABLE TeamData
     _Loss INT,
     _RankingPoints INT,
     PRIMARY KEY (_TeamID),
-    FOREIGN KEY (_UpcomingFixtureID) REFERENCES FixtureData(_FixtureID),
-    FOREIGN KEY (_UpcomingSeriesID) REFERENCES SeriesData(_SeriesID),
-    FOREIGN KEY (_HomeGroundID) REFERENCES Ground(_GroundID)
+    FOREIGN KEY (_UpcomingFixtureID) REFERENCES FixtureData(_FixtureID) ON DELETE SET NULL,
+    FOREIGN KEY (_UpcomingSeriesID) REFERENCES SeriesData(_SeriesID) ON DELETE SET NULL,
+    FOREIGN KEY (_HomeGroundID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
 CREATE TABLE PlayerData
@@ -89,7 +94,7 @@ CREATE TABLE PlayerData
     _Name VARCHAR(20),
     _Age INT,
     _Country VARCHAR(30),
-    _Role VARCHAR(30),
+    _RoleID INT,
     -- Batting Stats
     _BatAvg FLOAT,
     _BattingStyle VARCHAR(30),
@@ -114,8 +119,9 @@ CREATE TABLE PlayerData
     _LastMatchID INT,
 
     PRIMARY KEY (_PlayerID),
-    FOREIGN KEY (_LastMatchID) REFERENCES FixtureData(_FixtureID),
-    FOREIGN KEY (_TeamID) REFERENCES TeamData(_TeamID)
+    FOREIGN KEY (_LastMatchID) REFERENCES FixtureData(_FixtureID) ON DELETE SET NULL,
+    FOREIGN KEY (_TeamID) REFERENCES TeamData(_TeamID) ON DELETE SET NULL,
+    FOREIGN KEY (_RoleID) REFERENCES RolesData(_RoleID) ON DELETE SET NULL
 );
 
 
