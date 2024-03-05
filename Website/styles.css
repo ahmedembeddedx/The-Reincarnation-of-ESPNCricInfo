@@ -62,6 +62,7 @@ html
 }
 
 #SignInForm {
+    font-family: monospace;
     width: 50%;
     background-color: #C2C2C2;
     background-image: linear-gradient(to bottom right, #C2C2C2, #7d7d7d);
@@ -120,4 +121,14 @@ html
     font-size: medium;
     border: 3px solid #282828;
     cursor: pointer;
+}
+
+h3
+{
+    color: #C2C2C2;
+}
+
+a{
+    color: inherit;
+    text-decoration: inherit;
 }
