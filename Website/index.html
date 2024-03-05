@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>ESPNCricInfo Reincarnated</title>
+    <script src="scripts.js"></script>
 </head>
 <body>
     <div id="logo">
@@ -32,19 +33,18 @@
     </div>
 
     <div id="SignInForm">
-        <label for="" id="input_creds">
-            Username: <input type="text" name="" id="input_creds" placeholder="@Ibtehaj.Noods">
+        <label for="username" id="input_creds">
+            Username: <input type="text" id="username" class="input_creds" placeholder="@IbtehajAlvi">
         </label>
-        <label for="" id="input_creds">
-            Password: <input type="text" name="" id="input_creds" placeholder="*********">
+        <label for="password" id="input_creds">
+            Password: <input type="password" id="password" class="input_creds" placeholder="*********">
         </label>
         <div style="padding-right: 100px;">
-            <button class="b2">
+            <button class="b2", onclick="checkCredentials()">
                 Log In
             </button>
         </div>
+        <div id="loginStatus"></div>
     </div>
-
-
 </body>
 </html>
