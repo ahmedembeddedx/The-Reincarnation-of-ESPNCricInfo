@@ -118,7 +118,7 @@ html
 {
     background-color: #C2C2C2;
     color: #282828;
-    font-size: medium;
+    font-size: large;
     border: 3px solid #282828;
     cursor: pointer;
 }
@@ -126,9 +126,16 @@ html
 h3
 {
     color: #C2C2C2;
+    font-family: monospace;
+    text-align: center;
 }
 
 a{
     color: inherit;
     text-decoration: inherit;
+}
+
+#Players
+{
+    color: orange;
 }
