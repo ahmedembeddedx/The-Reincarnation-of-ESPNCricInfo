@@ -6,7 +6,7 @@ html
 
 #logo
 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
     color: #C2C2C2;
     text-decoration: solid;
     text-align: center;
@@ -60,6 +60,19 @@ html
     color: #282828;
     font-size: 200%;
     cursor: pointer;
+}
+
+.b3
+{
+    background-color: #C2C2C2;
+    color: #282828;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.b3:hover
+{
+    cursor:default;
 }
 
 #FormTable {
@@ -116,6 +129,7 @@ html
 
 .b2
 {
+    font-weight: bold;
     background-color: #282828;
     color: #C2C2C2;
     justify-content: right;
