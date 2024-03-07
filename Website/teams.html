@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5038/5038319.png">
+    <link rel="stylesheet" type="text/css" href="styles.css" id="css_file">
     <title>ESPNCricInfo Reincarnated</title>
     <script src="scripts.js"></script>
 </head>
@@ -12,13 +13,13 @@
         <p>ESPN CricInfo</p>
     </div>
     <div class="general_align">
-        <button onclick="toHome()" class="b1">Home</button>
-        <button onclick="toPlayers()" class="b1">Players</button>
-        <button onclick="toTeams()" class="b1">Teams</button>
-        <button onclick="toMatches()" class="b1">Matches</button>
-        <button onclick="toSeries()" class="b1">Series</button>
-        <button onclick="toUpdates()" class="b1">Updates</button>
-        <button onclick="toAdmin()" class="b1">Admin</button>
+        <button onclick="toUpdates()" class="b1" id="Updates">Updates</button>
+        <button onclick="toPlayers()" class="b1" id="Players">Players</button>
+        <button onclick="toTeams()" class="b1 b3" id="Teams">Teams</button>
+        <button onclick="toMatches()" class="b1" id="Matches">Matches</button>
+        <button onclick="toSeries()" class="b1" id="Series">Series</button>
+        <button onclick="toAdmin()" class="b1" id="Admin">Admin</button>
+        <button onclick="switchMode()" class="b1" id="SwitchMode">Theme</button>
     </div>
     <h3>Teams Data</h3>
     <div id="FormTable">
