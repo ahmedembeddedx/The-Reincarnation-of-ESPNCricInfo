@@ -15,16 +15,19 @@ html
     border: 3px solid transparent;
     background-color: #282828;
     border-radius: 15px;
-    transition: 150ms ease-in;
     cursor:default;
     margin-bottom: 10px;
+    transition: 150ms ease-in;
+    
 }
 #logo:hover
 {
     font-size: 340%;
     background-color: #C2C2C2;
     color: #282828;
+
 }
+
 
 
 .general_align {
@@ -90,6 +93,7 @@ html
 }
 
 #SignInFormTable {
+    padding-top: 20px;
     font-family: monospace;
     width: 50%;
     background-color: #C2C2C2;
@@ -98,9 +102,9 @@ html
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    font-size: large;
+    font-size:larger;
+    font-weight: bold;
     margin: 0 auto;
-    border: 3px solid white;
 }
 
 
@@ -153,6 +157,7 @@ html
     cursor: pointer;
 }
 
+
 .displaytext
 {
     text-align: justify;
@@ -186,7 +191,17 @@ table, th, td {
     border: 3px solid black;
 }
 
-th, td {
+td,th {
     padding: 8px;
     text-align: center;
 }
+
+
+th {
+    border: 3px solid #898888;
+    background-color: #282828; 
+    color: #c2c2c2;
+}
+
+
+

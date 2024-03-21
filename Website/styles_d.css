@@ -90,6 +90,7 @@ html
 }
 
 #SignInFormTable {
+    padding-top: 20px;
     font-family: monospace;
     width: 50%;
     background-color: #9b9999;
@@ -98,9 +99,10 @@ html
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    font-size: large;
+    font-size:larger;
+    font-weight: bold;
     margin: 0 auto;
-    border: 3px solid #282828;
+
 }
 
 
@@ -189,16 +191,33 @@ table {
 }
 
 table, th, td {
-    color: #C2C2C2;
     border: 3px solid #C2C2C2;
-}
-
-.news
-{
-    color: #c2c2c2;
 }
 
 th, td {
     padding: 8px;
     text-align: center;
+}
+
+td
+{
+    color: #C2C2C2;
+}
+
+td,th {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    border: 3px solid #aeaaaa;
+    color: #282828;
+    background-color: #c2c2c2; 
+}
+
+
+
+.news
+{
+    color: #c2c2c2;
 }
