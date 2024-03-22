@@ -1,15 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: monospace;
 }
 html
 {
@@ -19,6 +16,7 @@ html
 
 #logo
 {
+    margin-top: 10px;
     font-weight: bold;
     color: #C2C2C2;
     text-decoration: solid;
@@ -103,6 +101,7 @@ html
 }
 
 #SignInFormTable {
+    padding-top: 20px;
     font-family: monospace;
     width: 50%;
     background-color: #C2C2C2;
@@ -119,6 +118,7 @@ html
 
 .input_creds
 {
+    font-weight: bold;
     margin: 5px;
     font-family: monospace;
     font-size: 150%;
@@ -199,7 +199,14 @@ table, th, td {
     border: 3px solid black;
 }
 
-th, td {
+td,th {
     padding: 8px;
     text-align: center;
+}
+
+
+th {
+    border: 3px solid #898888;
+    background-color: #282828; 
+    color: #c2c2c2;
 }

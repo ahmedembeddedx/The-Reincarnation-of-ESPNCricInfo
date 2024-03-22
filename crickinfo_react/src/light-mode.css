@@ -1,3 +1,14 @@
+body {
+    margin: 0;
+    font-family: monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: monospace;
+}
+
 html
 {
     font-family: monospace;
@@ -6,7 +17,9 @@ html
 
 #logo
 {
+    margin-top: 10px;
     font-weight: bold;
+    font-family: monospace;
     color: #282828;
     text-decoration: solid;
     text-align: center;
@@ -90,6 +103,7 @@ html
 }
 
 #SignInFormTable {
+    padding-top: 20px;
     font-family: monospace;
     width: 50%;
     background-color: #9b9999;
@@ -106,6 +120,7 @@ html
 
 .input_creds
 {
+    font-weight: bold;
     margin: 5px;
     font-family: monospace;
     font-size: 150%;
@@ -183,22 +198,37 @@ footer
     text-align: center;
 }
 
+.news
+{
+    color: #c2c2c2;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
 table, th, td {
-    color: #C2C2C2;
     border: 3px solid #C2C2C2;
-}
-
-.news
-{
-    color: #c2c2c2;
 }
 
 th, td {
     padding: 8px;
     text-align: center;
+}
+
+td
+{
+    color: #C2C2C2;
+}
+
+td,th {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    border: 3px solid #aeaaaa;
+    color: #282828;
+    background-color: #c2c2c2; 
 }
