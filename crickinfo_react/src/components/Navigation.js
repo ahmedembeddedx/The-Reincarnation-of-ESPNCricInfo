@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../index.css';
-import '../light-mode.css';
+// import '../light-mode.css';
 
 export default function Navigation({ onNavigate, currentPage }) {
   const [isDarkMode, setIsDarkMode] = useState(true);
