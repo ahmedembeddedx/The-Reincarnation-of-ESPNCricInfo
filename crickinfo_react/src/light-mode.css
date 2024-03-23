@@ -15,8 +15,15 @@ html
     background: #c2c2c2;
 }
 
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #logo
 {
+    margin-left: 10px;
     margin-top: 10px;
     font-weight: bold;
     font-family: monospace;
@@ -39,6 +46,24 @@ html
     color: #C2C2C2;
 }
 
+#date {
+    padding: 0px 3px;
+    margin-right: 30px;
+    font-weight: bold;
+    background-color: #C2C2C2;
+    text-decoration: solid;
+    text-align: center;
+    border: 3px solid transparent;
+    color: #282828;
+    border-radius: 5px;
+    transition: 150ms ease-in, font-size 300ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out;
+    cursor: default;
+}
+
+#date:hover {
+    background-color: #282828;
+    color: #C2C2C2;
+}
 
 .general_align {
     width: 100%;
