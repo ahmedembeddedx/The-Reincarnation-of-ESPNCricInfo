@@ -17,7 +17,7 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true);
-    setCurrentPage('players'); // Set the initial page after login
+    setCurrentPage('updates');
   };
 
   const handleNavigate = (page) => {

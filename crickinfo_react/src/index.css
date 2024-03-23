@@ -14,6 +14,14 @@ html
     background: #282828;
 }
 
+
+#logo:hover
+{
+    font-size: 340%;
+    background-color: #282828;
+    color: #C2C2C2;
+}
+
 #logo
 {
     margin-top: 10px;

@@ -5,10 +5,8 @@ export default function Login({onLogin}) {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-    // Perform your authentication logic here
-    // For simplicity, let's assume a hardcoded username and password
     if (username === 'admin' && password === 'admin123') {
-        onLogin(); // Call the onLogin function provided by the parent component
+        onLogin();
     } else {
         alert('Invalid credentials. Please try again.');
     }
@@ -17,16 +15,25 @@ export default function Login({onLogin}) {
     <div>
         <div id="SignInFormTable">
             <label htmlFor="username" id="input_creds">
-                Username: <input type="text" className='input_creds' placeholder="@ahmedembeddedx" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <div style={{fontWeight: 'bold', fontSize: '20px'}}>
+                    Username: 
+                </div>
+                <input type="text" className='input_creds' placeholder="@ahmedembeddedx" value={username} onChange={(e) => setUsername(e.target.value)}/>
             </label>
             <label htmlFor="password" id="input_creds">
-                Password: <input type="password" className='input_creds' placeholder="**********" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <div style={{fontWeight: 'bold', fontSize: '20px'}}>
+                    Password:
+                </div> 
+                <input type="password" className='input_creds' placeholder="**********" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </label>
             <div style={{ paddingRight: '100px' }}>
                 <button className="b2" onClick={handleLogin}>
                     Log In
                 </button>
             </div>
+            
+            <div style={{fontSize: '15px', fontWeight: 'bold'}}>Username: admin</div>
+            <div style={{fontSize: '15px', fontWeight: 'bold'}}>Password: admin123</div>
             <div id="loginStatus"></div>
         </div>
         <br/>
