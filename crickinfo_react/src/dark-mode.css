@@ -37,11 +37,7 @@ html {
     justify-content: space-between;
     align-items: center;
 }
-<<<<<<< HEAD
 #searchButton
-=======
-  #searchButton
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
 {
     margin: 10px;
     font-family: monospace;
@@ -61,7 +57,6 @@ html {
 
 #searchButton:hover
 {
-<<<<<<< HEAD
     background-color: var(--whitish);
     color: var(--greyish);
     border: 3px solid var(--greyish);
@@ -70,16 +65,6 @@ html {
 #search:hover
 {
     border: 2px solid var(--whitish);
-=======
-    background-color: #282828;
-    color: #C2C2C2;
-    border: 3px solid #c2c2c2;
-
-}
-  #search:hover
-{
-    border: 2px solid #282828;
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
 }
 #search
 {
@@ -91,23 +76,15 @@ html {
     border: 3px solid transparent;
     border-radius: 10px;
     padding-left: 10px;
-<<<<<<< HEAD
     background-color: var(--greyish);
     color: var(--whitish);
-=======
-    background-color: #898888;
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
     border: 2px solid transparent;
     margin-bottom: 10px;
 }
 
 #search::placeholder
 {
-<<<<<<< HEAD
     color: var(--whitish);
-=======
-    color: #282828;
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
 }
   #header {
       display: flex;
@@ -265,13 +242,8 @@ html {
   .b2
   {
       font-weight: bold;
-<<<<<<< HEAD
       background-color: var(--greyish);
       color: var(--whitish);
-=======
-      background-color:#282828;
-      color: #C2C2C2;
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       justify-content: right;
       margin: 5px;
       font-family: monospace;
@@ -296,13 +268,8 @@ html {
   .b4
   {
       font-weight: bold;
-<<<<<<< HEAD
       background-color: var(--whitish);
       color: var(--greyish);
-=======
-      background-color: var(--greyish);
-      color: var(--whitish);
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       justify-content: right;
       font-family: monospace;
       font-size: 100%;
@@ -315,28 +282,17 @@ html {
   
   .b4:hover
   {
-<<<<<<< HEAD
       background-color: var(--greyish);
       color: var(--whitish);
       border: 3px solid var(--whitish);
-=======
-      background-color: var(--whitish);
-      color: var(--greyish);
-      border: 3px solid var(--greyish);
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       cursor: pointer;
   }
   
   .b5
   {
       font-weight: bold;
-<<<<<<< HEAD
       background-color: var(--whitish);
       color: var(--greyish);
-=======
-      background-color: var(--greyish);
-      color: #C2C2C2;
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       justify-content: right;
       font-family: monospace;
       font-size: 100%;
@@ -349,11 +305,7 @@ html {
   
   .b5:hover
   {
-<<<<<<< HEAD
       border: 3px solid var(--whitish);
-=======
-      border: 3px solid var(--greyish);
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       cursor: pointer;
   }
   
@@ -388,40 +340,22 @@ html {
   }
   
   table, th, td {
-<<<<<<< HEAD
       border: 3px solid var(--whitish);
-=======
-      border: 3px solid var(--white);
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
   }
   
   td,th {
       padding: 8px;
       text-align: center;
-<<<<<<< HEAD
       color:var(--whitish);
   }
   tr {
     padding: 8px;
     color:var(--whitish)
-=======
-      color:var(--white)
-  }
-  tr {
-    padding: 8px;
-    color:var(--white)
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
   }
   
   
   th {
-<<<<<<< HEAD
       border: 3px solid var(--whitish);
       background-color:var(--whitish); 
       color: var(--greyish);
-=======
-      border: 3px solid #898888;
-      background-color:var(--greyish); 
-      color: var(--whitish);
->>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
   }
