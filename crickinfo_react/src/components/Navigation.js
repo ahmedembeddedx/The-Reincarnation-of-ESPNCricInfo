@@ -1,25 +1,44 @@
 import React, { useState } from 'react';
-import '../index.css'; // Import your default CSS file
-// import '../light-mode.css'; // Import your day mode CSS file
+
+
+import "../dark-mode.css"
+
 
 export default function Navigation({ onNavigate, currentPage }) {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+  const setDarkMode = () =>{
+    document.querySelector("body").setAttribute("data-theme", "dark")
   };
-
+  const setLightMode = () =>{
+    document.querySelector("body").setAttribute("data-theme", "light")
+  };
+  const toggleMode = (e) => {
+    // Toggle the state of isDarkMode
+    if (e.target.checked){
+      setDarkMode();
+      e.target.checked = false;
+    } 
+    else{
+      setLightMode();
+      e.target.checked = true;
+    } 
+    setIsDarkMode(prevMode => !prevMode);
+    
+  };
   return (
-    <nav className={isDarkMode ? 'dark-mode' : 'day-mode'}>
-      <div className='general_align'>
-        <button onClick={() => onNavigate('updates')} className={`b1 ${currentPage === 'updates' ? 'b3 active' : ''}`} id="Updates">Updates</button>
-        <button onClick={() => onNavigate('players')} className={`b1 ${currentPage === 'players' ? 'b3 active' : ''}`} id="Players">Players</button>
-        <button onClick={() => onNavigate('teams')} className={`b1 ${currentPage === 'teams' ? 'b3 active' : ''}`} id="Teams">Teams</button>
-        <button onClick={() => onNavigate('matches')} className={`b1 ${currentPage === 'matches' ? 'b3 active' : ''}`} id="Matches">Matches</button>
-        <button onClick={() => onNavigate('series')} className={`b1 ${currentPage === 'series' ? 'b3 active' : ''}`} id="Series">Series</button>
-        <button onClick={() => onNavigate('admin')} className={`b1 ${currentPage === 'admin' ? 'b3 active' : ''}`} id="Admin">Admin</button>
-        <button onClick={toggleTheme} className="b1" id="SwitchTheme">Theme</button>
-      </div>
-    </nav>
+    <div className={`general_align ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <button onClick={() => onNavigate('updates')} className='b1' id="Updates">Updates</button>
+      <button onClick={() => onNavigate('players')} className='b1' id="Players">Players</button>
+      <button onClick={() => onNavigate('teams')} className='b1' id="Teams">Teams</button>
+      <button onClick={() => onNavigate('matches')} className='b1' id="Matches">Matches</button>
+      <button onClick={() => onNavigate('series')}className='b1' id="Series">Series</button>
+      <button onClick={() => onNavigate('admin')} className='b1' id="Admin">Admin</button>
+      {/* Button for toggling the current mode */}
+      <button onClick={toggleMode} className='b1' id="ToggleMode">
+        {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+      </button>        
+    </div>
+
   );
 }

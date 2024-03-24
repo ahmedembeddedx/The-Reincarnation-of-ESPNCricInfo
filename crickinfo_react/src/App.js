@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import './dark-mode.css'
 import Headerer from './components/Headerer';
 import Navigation from './components/Navigation';
 import Admin from './pages/Admin';
