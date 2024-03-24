@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+>>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
 
 
 import "../dark-mode.css"
 
+<<<<<<< HEAD
+=======
+import '../index.css'; // Import your default CSS file
+import '../light-mode.css'; // Import your day mode CSS file
+>>>>>>> Stashed changes
+=======
+>>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
 
 export default function Navigation({ onNavigate, currentPage }) {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -36,7 +47,11 @@ export default function Navigation({ onNavigate, currentPage }) {
       <button onClick={() => onNavigate('admin')} className='b1' id="Admin">Admin</button>
       {/* Button for toggling the current mode */}
       <button onClick={toggleMode} className='b1' id="ToggleMode">
+<<<<<<< HEAD
+        {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+=======
         {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+>>>>>>> 21c26852dd938a0df7fbfb405536f807de7d6534
       </button>        
     </div>
 

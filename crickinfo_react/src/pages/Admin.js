@@ -17,32 +17,32 @@ export default function Admin() {
               <tr>
                 <td><button className='b4' id="addTeam">Add Team</button></td>
                 <td><button className='b4' id="updateTeam">Update Team</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}}  id="deleteTeam">Delete Team</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}}  id="deleteTeam">Delete Team</button></td>
               </tr>
               <tr>  
                 <td><button className='b4' id="addPlayer">Add Player</button></td>
                 <td><button className='b4' id="updatePlayer">Update Player</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}}  id="deletePlayer">Delete Player</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}}  id="deletePlayer">Delete Player</button></td>
               </tr>
               <tr>
                 <td><button className='b4' id="addSeries">Add Series</button></td>
                 <td><button className='b4' id="updateSeries">Update Series</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}}  id="deleteSeries">Delete Series</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}}  id="deleteSeries">Delete Series</button></td>
               </tr>
               <tr>
                 <td><button className='b4' id="addMatch">Add Match</button></td>
                 <td><button className='b4' id="updateMatch">Update Match</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}} id="deleteMatch">Delete Match</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}} id="deleteMatch">Delete Match</button></td>
               </tr>
               <tr>
                 <td><button className='b4' id="addNews">Add News</button></td>
                 <td><button className='b4' id="updateNews">Update News</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}} id="deleteNews">Delete News</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}} id="deleteNews">Delete News</button></td>
               </tr>
               <tr>
-                <td><button className='b5' style={{backgroundColor :'#0000ff'}} id='addAdmin'>Add Admin</button></td>
-                <td><button className='b5' style={{backgroundColor :'#0000ff'}} id='updateAdmin'>Update Admin</button></td>
-                <td><button className='b5' style={{backgroundColor :'#cc0000'}} id='deleteAdmin'>Delete Admin</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}} id='addAdmin'>Add Admin</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}} id='updateAdmin'>Update Admin</button></td>
+                <td><button className='b4' style={{backgroundColor :'#cc0000'}} id='deleteAdmin'>Delete Admin</button></td>
               </tr>
 
 
