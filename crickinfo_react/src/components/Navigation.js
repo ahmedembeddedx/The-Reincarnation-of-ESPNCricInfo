@@ -36,7 +36,7 @@ export default function Navigation({ onNavigate, currentPage }) {
       <button onClick={() => onNavigate('admin')} className='b1' id="Admin">Admin</button>
       {/* Button for toggling the current mode */}
       <button onClick={toggleMode} className='b1' id="ToggleMode">
-        {isDarkMode ? 'Dark Mode' : 'Light Mode'}
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
       </button>        
     </div>
 
