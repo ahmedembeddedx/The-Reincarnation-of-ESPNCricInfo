@@ -4,6 +4,8 @@ export default function Updates() {
   return (
     <div>
         <h3>Updates Data</h3>
+        <input type="text" id="search" placeholder="Find News..." />
+        <button id="searchButton">Search</button>
         <div id="FormTable">
             <tr>
                 <h2>Highlights of Babar Azam Daddy Ton Against NZ (2024-03-10)</h2>

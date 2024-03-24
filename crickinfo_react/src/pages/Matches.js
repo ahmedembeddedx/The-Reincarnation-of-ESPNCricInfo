@@ -4,6 +4,8 @@ export default function Matches() {
   return (
     <div>
         <h3>Matches Data</h3>
+        <input type="text" id="search" placeholder="Find Matches..." />
+        <button id="searchButton">Search</button>
         <div id="FormTable">
             
             <table>

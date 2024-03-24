@@ -4,6 +4,8 @@ export default function Players() {
   return (
     <div>
         <h3>Player Data</h3>
+        <input type="text" id="search" placeholder="Find Player..." />
+        <button id="searchButton">Search</button>
         <div id="FormTable">
             
             <table>

@@ -4,7 +4,8 @@ export default function Series() {
   return (
     <div>
       <h3>Series Data</h3>
-
+      <input type="text" id="search" placeholder="Find Series..." />
+      <button id="searchButton">Search</button>
         <div id="FormTable">
 
             <table>

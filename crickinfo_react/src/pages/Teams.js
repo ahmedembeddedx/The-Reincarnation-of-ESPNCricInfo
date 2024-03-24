@@ -4,6 +4,8 @@ export default function Teams() {
   return (
     <div>
         <h3>Teams Data</h3>
+        <input type="text" id="search" placeholder="Find Team..." />
+        <button id="searchButton">Search</button>
         <div id="FormTable">
             
             <table>
