@@ -32,8 +32,8 @@ export default function Login({onLogin}) {
                 </button>
             </div>
             
-            <div style={{fontSize: '15px', fontWeight: 'bold'}}>Username: admin</div>
-            <div style={{fontSize: '15px', fontWeight: 'bold'}}>Password: admin123</div>
+            <div style={{fontSize: '15px'}}><strong>Username: </strong>admin</div>
+            <div style={{fontSize: '15px'}}><strong>Password: </strong>admin123</div>
             <div id="loginStatus"></div>
         </div>
         <br/>

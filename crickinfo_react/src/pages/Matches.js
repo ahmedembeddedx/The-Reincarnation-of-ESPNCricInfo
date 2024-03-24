@@ -7,7 +7,6 @@ export default function Matches() {
         <input type="text" id="search" placeholder="Find Matches..." />
         <button id="searchButton">Search</button>
         <div id="FormTable">
-            
             <table>
                 <tr>
                     <th>Match ID</th>
