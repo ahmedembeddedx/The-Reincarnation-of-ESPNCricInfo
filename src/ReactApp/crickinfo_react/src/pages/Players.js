@@ -1,6 +1,25 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 export default function Players() {
+    const [players, setPlayers] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/players')
+            .then(response => {
+                // Log API response for debugging
+                console.log('API response:', response.data);
+                
+                // Check if the response data is an array and is not empty
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    // Update the state with the fetched data
+                    setPlayers(response.data);
+                } else {
+                    console.error('API response data is empty or not an array.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
   return (
     <div>
         <h3>Player Data</h3>
@@ -9,50 +28,34 @@ export default function Players() {
         <div id="FormTable">
             
             <table>
-                <tr>
-                    <th>Player Name</th>
-                    <th>Player ID</th>
-                    <th>Player Role</th>
-                    <th>Player Team</th>
-                    <th>Player Matches</th>
-                    <th>Player Runs</th>
-                    <th>Player Wickets</th>
-                    <th>Player Catches</th>
-                    <th>Player Stumpings</th>
-                </tr>
-                <tr>
-                    <td>Babar Azam</td>
-                    <td>1</td> 
-                    <td>Batsman</td>
-                    <td>Pakistan</td>
-                    <td>100</td>
-                    <td>5000</td>
-                    <td>0</td>
-                    <td>50</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Virat Kohli</td>
-                    <td>2</td> 
-                    <td>Batsman</td>
-                    <td>India</td>
-                    <td>150</td>
-                    <td>8000</td>
-                    <td>0</td>
-                    <td>100</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Steve Smith</td>
-                    <td>3</td> 
-                    <td>Batsman</td>
-                    <td>Australia</td>
-                    <td>120</td>
-                    <td>6000</td>
-                    <td>0</td>
-                    <td>70</td>
-                    <td>0</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Player ID</th>
+                        <th>Player Role</th>
+                        <th>Player Team</th>
+                        <th>Player Matches</th>
+                        <th>Player Runs</th>
+                        <th>Player Wickets</th>
+                        <th>Player Catches</th>
+                        <th>Player Stumpings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {players.map(player => (
+                        <tr key={player.PlayerID}>
+                            <td>{player.PlayerName}</td>
+                            <td>{player.PlayerID}</td>
+                            <td>{player.PlayerRole}</td>
+                            <td>{player.PlayerTeam}</td>
+                            <td>{player.PlayerMatches}</td>
+                            <td>{player.PlayerRuns}</td>
+                            <td>{player.PlayerWickets}</td>
+                            <td>{player.PlayerCatches}</td>
+                            <td>{player.PlayerStumpings}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
             
         </div>
