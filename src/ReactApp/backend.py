@@ -1,13 +1,14 @@
-from flask import Flask,jsonify
+from flask import Flask, jsonify
 from flask_cors import CORS
+
 import pyodbc
 
 app = Flask(__name__)
 
 conn_str = (
     r'DRIVER={ODBC Driver 17 for SQL Server};'
-    r'SERVER=DESKTOP-50DO7J6;'
-    r'DATABASE=ESPNCrickInfo;'
+    r'SERVER=SA;'
+    r'DATABASE=ESPNCricInfo;'
     r'Trusted_Connection=yes;'
 )
 conn = pyodbc.connect(conn_str)
