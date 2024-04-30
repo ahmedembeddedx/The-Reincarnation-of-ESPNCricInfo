@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 export default function Players() {
     const [players, setPlayers] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+
     useEffect(() => {
         axios.get('http://localhost:5000/api/players')
             .then(response => {
@@ -20,11 +22,24 @@ export default function Players() {
                 console.error('Error fetching data:', error);
             });
     }, []);
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredPlayers = players.filter(player =>
+        player.PlayerName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
   return (
     <div>
         <h3>Player Data</h3>
-        <input type="text" id="search" placeholder="Find Player..." />
-        <button id="searchButton">Search</button>
+        <input
+            type="text"
+            id="search"
+            placeholder="Find Team..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+        />
         <div id="FormTable">
             
             <table>
@@ -37,12 +52,12 @@ export default function Players() {
                         <th>Player Matches</th>
                         <th>Player Runs</th>
                         <th>Player Wickets</th>
-                        <th>Player Catches</th>
-                        <th>Player Stumpings</th>
+                        {/* <th>Player Catches</th>
+                        <th>Player Stumpings</th> */}
                     </tr>
                 </thead>
                 <tbody>
-                {players.map(player => (
+                {filteredPlayers.map(player => (
                         <tr key={player.PlayerID}>
                             <td>{player.PlayerName}</td>
                             <td>{player.PlayerID}</td>
@@ -51,8 +66,8 @@ export default function Players() {
                             <td>{player.PlayerMatches}</td>
                             <td>{player.PlayerRuns}</td>
                             <td>{player.PlayerWickets}</td>
-                            <td>{player.PlayerCatches}</td>
-                            <td>{player.PlayerStumpings}</td>
+                            {/* <td>{player.PlayerCatches}</td>
+                            <td>{player.PlayerStumpings}</td> */}
                         </tr>
                     ))}
                 </tbody>

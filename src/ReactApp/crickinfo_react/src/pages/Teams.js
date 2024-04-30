@@ -1,74 +1,97 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 export default function Teams() {
-  return (
-    <div>
-        <h3>Teams Data</h3>
-        <input type="text" id="search" placeholder="Find Team..." />
-        <button id="searchButton">Search</button>
-        <div id="FormTable">
+    // State to store the fetched team data
+    const [teamsData, setTeamsData] = useState([]);
+
+    // State for the search query
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // Fetch team data from the API endpoint on component mount
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/teams')
+        .then(response => {
+            // Log API response for debugging
+            console.log('API response:', response.data);
             
-            <table>
-                <tr>
-                    <th>Team Name</th>
-                    <th>Team ID</th>
-                    <th>Team Captain</th>
-                    <th>Team Coach</th>
-                    <th>Team Matches</th>
-                    <th>Team Wins</th>
-                    <th>Team Losses</th>
-                    <th>Team Ties</th>
-                    <th>Team N/R</th>
-                </tr>
-                <tr>
-                    <td>Pakistan</td>
-                    <td>1</td>
-                    <td>Babar Azam</td>
-                    <td>Misbah-ul-Haq</td>
-                    <td>100</td>
-                    <td>50</td>
-                    <td>40</td>
-                    <td>5</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>India</td>
-                    <td>2</td>
-                    <td>Virat Kohli</td>
-                    <td>Ravi Shastri</td>
-                    <td>150</td>
-                    <td>80</td>
-                    <td>60</td>
-                    <td>5</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Australia</td>
-                    <td>3</td>
-                    <td>Tim Paine</td>
-                    <td>Justin Langer</td>
-                    <td>200</td>
-                    <td>100</td>
-                    <td>80</td>
-                    <td>10</td>
-                    <td>10</td>
-                </tr>
+            // Check if the response data is an array and is not empty
+            if (Array.isArray(response.data) && response.data.length > 0) {
+                // Update the state with the fetched data
+                setTeamsData(response.data);
+            } else {
+                console.error('API response data is empty or not an array.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    }, []);
 
+    // Handle search input change
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
 
+    // Filtered teams based on the search query
+    const filteredTeams = teamsData.filter(team =>
+        team.TeamName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
-            </table>
-
-
+    return (
+        <div>
+            <h3>Teams Data</h3>
+            <input
+                type="text"
+                id="search"
+                placeholder="Find Team..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
+            <div id="FormTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>Team ID</th>
+                            <th>Home Ground ID</th>
+                            <th>Abbreviation</th>
+                            <th>Nickname</th>
+                            <th>Upcoming Fixture ID</th>
+                            <th>Upcoming Series ID</th>
+                            <th>Wins</th>
+                            <th>Draws</th>
+                            <th>Losses</th>
+                            <th>Ranking Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredTeams.map((team) => (
+                            <tr key={team.TeamID}>
+                                <td>{team.TeamName}</td>
+                                <td>{team.TeamID}</td>
+                                <td>{team.HomeGroundID}</td>
+                                <td>{team.Abbreviation}</td>
+                                <td>{team.Nickname}</td>
+                                <td>{team.UpcomingFixtureID}</td>
+                                <td>{team.UpcomingSeriesID}</td>
+                                <td>{team.Wins}</td>
+                                <td>{team.Draws}</td>
+                                <td>{team.Losses}</td>
+                                <td>{team.RankingPoints}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <hr/>
+            <footer>
+                <p>ESPNCricInfo Reincarnated</p>
+                <p>Copyright 2024. All Rights Reserved.</p>
+                <a href="https://github.com/ahmedembeddedx">
+                    <img src="https://cdn-icons-png.freepik.com/512/919/919847.png" alt="GitHub" height="40"/>
+                </a>
+            </footer>
         </div>
-
-        <br/>
-        <br/>
-        <hr/>
-        <footer>
-            <p>ESPNCricInfo Reincarnated</p>
-            <p>Copyright 2024. All Rights Reserved.</p>
-            <a href="https://github.com/ahmedembeddedx"><img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40"/></a>
-        </footer>
-    </div>
-  )
+    );
 }
