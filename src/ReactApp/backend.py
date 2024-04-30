@@ -19,29 +19,29 @@ CORS(app)
 
 
 #login
-@app.route('/api/authenticate', methods=['POST'])
-def authenticate_user():
-    # Get the username and password from the request
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+# @app.route('/api/authenticate', methods=['POST'])
+# def authenticate_user():
+#     # Get the username and password from the request
+#     data = request.get_json()
+#     username = data.get('username')
+#     password = data.get('password')
 
-    # Call the stored procedure to authenticate the user
-    cursor.execute('EXEC AuthenticateUser @Username = ?', (username,))
-    user_data = cursor.fetchone()
+#     # Call the stored procedure to authenticate the user
+#     cursor.execute('EXEC AuthenticateUser @Username = ?', (username,))
+#     user_data = cursor.fetchone()
 
-    # Check if the user exists and the password matches
-    if user_data:
-        stored_password = user_data[1]  # The second column contains the password
-        if stored_password == password:
-            # Authentication successful
-            return jsonify({'success': True, 'user_data': user_data})
-        else:
-            # Invalid password
-            return jsonify({'success': False, 'message': 'Invalid password'}), 401
-    else:
-        # User not found
-        return jsonify({'success': False, 'message': 'User notfound'}), 404
+#     # Check if the user exists and the password matches
+#     if user_data:
+#         stored_password = user_data[1]  # The second column contains the password
+#         if stored_password == password:
+#             # Authentication successful
+#             return jsonify({'success': True, 'user_data': user_data})
+#         else:
+#             # Invalid password
+#             return jsonify({'success': False, 'message': 'Invalid password'}), 401
+#     else:
+#         # User not found
+#         return jsonify({'success': False, 'message': 'User notfound'}), 404
     
 #Team
 @app.route('/api/teams', methods=['GET'])
