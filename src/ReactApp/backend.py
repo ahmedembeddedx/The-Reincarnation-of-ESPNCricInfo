@@ -1,6 +1,7 @@
-from flask import Flask,jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pyodbc
+from model import db,User
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
@@ -18,30 +19,32 @@ CORS(app)
 
 
 #login
-# @app.route('/api/authenticate', methods=['POST'])
-# def authenticate_user():
-#     # Get the username and password from the request
-#     data = request.get_json()
-#     username = data.get('username')
-#     password = data.get('password')
+@app.route('/api/authenticate', methods=['POST'])
+def authenticate():
+    # Get data from the request body
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
 
-#     # Call the stored procedure to authenticate the user
-#     cursor.execute('EXEC AuthenticateUser @Username = ?', (username,))
-#     user_data = cursor.fetchone()
+    # Execute the stored procedure
+    cursor.execute('EXEC GetUserDetails @username = ?, @password = ?', (username, password))
+    result = cursor.fetchone()
 
-#     # Check if the user exists and the password matches
-#     if user_data:
-#         stored_password = user_data[1]  # The second column contains the password
-#         if stored_password == password:
-#             # Authentication successful
-#             return jsonify({'success': True, 'user_data': user_data})
-#         else:
-#             # Invalid password
-#             return jsonify({'success': False, 'message': 'Invalid password'}), 401
-#     else:
-#         # User not found
-#         return jsonify({'success': False, 'message': 'User notfound'}), 404
-    
+    if result:
+        # Convert the result to a dictionary
+        user_data = {
+            'username': result[0],
+            'name': result[1],
+            'country': result[2],
+            'phone_number': result[3],
+            'email': result[4],
+            'is_admin': result[5]
+        }
+        # Return success response with user data
+        return jsonify({'success': True, 'user_data': user_data})
+    else:
+        # Return failure response
+        return jsonify({'success': False, 'message': 'Invalid credentials'})
 #Team
 @app.route('/api/teams', methods=['GET'])
 def get_team_data():
