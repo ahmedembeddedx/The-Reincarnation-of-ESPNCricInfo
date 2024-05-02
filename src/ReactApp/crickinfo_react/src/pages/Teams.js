@@ -88,7 +88,7 @@ export default function Teams() {
             <footer>
                 <p>ESPNCricInfo Reincarnated</p>
                 <p>Copyright 2024. All Rights Reserved.</p>
-                <a href="https://github.com/ahmedembeddedx">
+                <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/">
                     <img src="https://cdn-icons-png.freepik.com/512/919/919847.png" alt="GitHub" height="40"/>
                 </a>
             </footer>

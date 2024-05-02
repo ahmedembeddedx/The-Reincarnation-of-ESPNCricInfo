@@ -27,7 +27,7 @@ export default function Updates() {
         <footer>
             <p>ESPNCricInfo Reincarnated</p>
             <p>Copyright 2024. All Rights Reserved.</p>
-            <a href="https://github.com/ahmedembeddedx"><img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40"/></a>
+            <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/"><img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40"/></a>
         </footer>
     </div>
   )
