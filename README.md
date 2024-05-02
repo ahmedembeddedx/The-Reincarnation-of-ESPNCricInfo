@@ -1,7 +1,3 @@
-Certainly! Here's an updated README tailored for your project:
-
----
-
 # The Reincarnation of ESPNCricInfo
 
 Welcome to The Reincarnation of ESPNCricInfo, a modernized cricket platform designed to provide enthusiasts with comprehensive cricket-related information and an enhanced user experience. This project utilizes Flask for the backend, React.js for the frontend, and SQL Server for the database.
