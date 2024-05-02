@@ -9,7 +9,7 @@ export default function Teams() {
 
     // Fetch team data from the API endpoint on component mount
     useEffect(() => {
-        axios.get('http://localhost:5000/api/teams')
+        axios.get('http://127.0.0.1:5000/api/teams')
         .then(response => {
             // Log API response for debugging
             console.log('API response:', response.data);

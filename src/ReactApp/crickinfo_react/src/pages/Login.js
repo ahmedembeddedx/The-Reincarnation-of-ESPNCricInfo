@@ -9,7 +9,7 @@ export default function Login({ onLogin }) {
     const handleLogin = async () => {
         try {
             // Send a POST request to the authentication endpoint
-            const response = await axios.post('http://localhost:5000/api/authenticate', {
+            const response = await axios.post('http://127.0.0.1:5000/api/authenticate', {
                 username,
                 password,
             });

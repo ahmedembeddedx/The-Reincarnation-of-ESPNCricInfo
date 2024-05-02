@@ -8,7 +8,7 @@ export default function Matches() {
 
   // Fetch matches data from the API endpoint when the component mounts
   useEffect(() => {
-    axios.get('http://localhost:5000/api/matches')
+    axios.get('http://127.0.0.1:5000/api/matches')
         .then(response => {
             console.log('API response:', response.data); // Log the response data
             
