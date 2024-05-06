@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import PopupsTeam from '../popUpsPages/PopupsTeam';
+
 export default function Teams() {
     // State to store the fetched team data
     const [teamsData, setTeamsData] = useState([]);
@@ -7,24 +11,25 @@ export default function Teams() {
     // State for the search query
     const [searchQuery, setSearchQuery] = useState('');
 
+    // State to manage the selected team and popup open status
+    const [selectedTeam, setSelectedTeam] = useState(null);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     // Fetch team data from the API endpoint on component mount
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/api/teams')
-        .then(response => {
-            // Log API response for debugging
-            console.log('API response:', response.data);
-            
-            // Check if the response data is an array and is not empty
-            if (Array.isArray(response.data) && response.data.length > 0) {
-                // Update the state with the fetched data
-                setTeamsData(response.data);
-            } else {
-                console.error('API response data is empty or not an array.');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+            .then(response => {
+                console.log('API response:', response.data);
+                
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    setTeamsData(response.data);
+                } else {
+                    console.error('API response data is empty or not an array.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }, []);
 
     // Handle search input change
@@ -36,6 +41,18 @@ export default function Teams() {
     const filteredTeams = teamsData.filter(team =>
         team.TeamName.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    // Function to open the popup
+    const openPopup = (team) => {
+        setSelectedTeam(team);
+        setIsPopupOpen(true);
+    };
+
+    // Function to close the popup
+    const closePopup = () => {
+        setIsPopupOpen(false);
+        setSelectedTeam(null);
+    };
 
     return (
         <div>
@@ -65,9 +82,9 @@ export default function Teams() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredTeams.map((team) => (
+                        {filteredTeams.map(team => (
                             <tr key={team.TeamID}>
-                                <td>{team.TeamName}</td>
+                                <td onClick={() => openPopup(team)} className='hover-on-data'>{team.TeamName }</td>
                                 <td>{team.TeamID}</td>
                                 <td>{team.HomeGroundID}</td>
                                 <td>{team.Abbreviation}</td>
@@ -83,8 +100,20 @@ export default function Teams() {
                     </tbody>
                 </table>
             </div>
-            <br/>
-            <hr/>
+
+            {/* Popup for displaying selected team */}
+            <Popup
+                open={isPopupOpen}
+                onClose={closePopup}
+                modal
+                closeOnDocumentClick
+            >
+                {selectedTeam && <PopupsTeam team={selectedTeam} />}
+                <button onClick={closePopup}>Close</button>
+            </Popup>
+
+            <br />
+            <hr />
             <footer>
                 <p>ESPNCricInfo Reincarnated</p>
                 <p>Copyright 2024. All Rights Reserved.</p>
