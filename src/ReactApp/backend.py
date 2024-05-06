@@ -130,14 +130,20 @@ def get_Playerdata():
                _RoleName AS PlayerRole,
                _Matches AS PlayerMatches,
                _BatRuns AS PlayerRuns,
+               PlayerData._BatAvg as BatAvg,
+               PlayerData._BattingStyle as BatStyle,
+               PlayerData._HS as HighestScore,
                _Wickets AS PlayerWickets,
-               _Age AS PlayerAge
+               _Age AS PlayerAge,
+               _PlayerID as PlayerID,
+               PlayerData.*
         FROM PlayerData 
         join TeamData on PlayerData._TeamID = TeamData._TeamID
         join RolesData on RolesData._RoleID = PlayerData._RoleID
-        order by PlayerRuns;
+        order by PlayerID;
     '''
     
+
     cursor.execute(query)
     data = cursor.fetchall()
     # Query the data from SQL Server

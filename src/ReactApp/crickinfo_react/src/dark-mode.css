@@ -17,6 +17,13 @@
     --whitish: #C2C2C2;
 }
 
+.hover-on-data{
+    text-decoration: none;
+}
+.hover-on-data:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 html {
     margin: 0;
     font-family: monospace;
