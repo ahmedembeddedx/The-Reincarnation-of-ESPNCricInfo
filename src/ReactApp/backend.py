@@ -130,14 +130,17 @@ def get_match_data():
 
 def get_Playerdata():
     query = '''
-        SELECT _Name AS PlayerName, 
-               _TeamID AS PlayerTeam, 
-               _RoleID AS PlayerRole,
+        SELECT PlayerData._Name AS PlayerName, 
+               TeamData._Name AS PlayerTeam, 
+               _RoleName AS PlayerRole,
                _Matches AS PlayerMatches,
                _BatRuns AS PlayerRuns,
                _Wickets AS PlayerWickets,
-               _PlayerID AS PlayerID
-        FROM PlayerData order by PlayerRuns;
+               _Age AS PlayerAge
+        FROM PlayerData 
+        join TeamData on PlayerData._TeamID = TeamData._TeamID
+        join RolesData on RolesData._RoleID = PlayerData._RoleID
+        order by PlayerRuns;
     '''
     
     cursor.execute(query)

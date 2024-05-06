@@ -27,7 +27,9 @@ export default function Players() {
     };
 
     const filteredPlayers = players.filter(player =>
-        player.PlayerName.toLowerCase().includes(searchQuery.toLowerCase())
+        player.PlayerName.toLowerCase().includes(searchQuery.toLowerCase())||
+        player.PlayerRole.toLowerCase().includes(searchQuery.toLowerCase())||
+        player.PlayerTeam.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
   return (
@@ -46,7 +48,7 @@ export default function Players() {
                 <thead>
                     <tr>
                         <th>Player Name</th>
-                        <th>Player ID</th>
+                        <th>Player Age</th>
                         <th>Player Role</th>
                         <th>Player Team</th>
                         <th>Player Matches</th>
@@ -60,7 +62,7 @@ export default function Players() {
                 {filteredPlayers.map(player => (
                         <tr key={player.PlayerID}>
                             <td>{player.PlayerName}</td>
-                            <td>{player.PlayerID}</td>
+                            <td>{player.PlayerAge}</td>
                             <td>{player.PlayerRole}</td>
                             <td>{player.PlayerTeam}</td>
                             <td>{player.PlayerMatches}</td>
