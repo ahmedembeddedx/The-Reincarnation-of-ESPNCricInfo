@@ -6,20 +6,20 @@ from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__)
 
 # WINDOWS
-conn_str = (
-    r'DRIVER={ODBC Driver 17 for SQL Server};'
-    r'SERVER=DESKTOP-50DO7J6;'
-    r'DATABASE=ESPNCrickInfo;'
-    r'Trusted_Connection=yes;'
-)
-conn = pyodbc.connect(conn_str)
+# conn_str = (
+#     r'DRIVER={ODBC Driver 17 for SQL Server};'
+#     r'SERVER=DESKTOP-50DO7J6;'
+#     r'DATABASE=ESPNCrickInfo;'
+#     r'Trusted_Connection=yes;'
+# )
+# conn = pyodbc.connect(conn_str)
 
 ## MAC
-# conn = pyodbc.connect(
-#        'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
-#        ';SERVER=' + 'localhost,1433' + ';UID=' + 'sa' + 
-#        ';PWD=' + 'dockerStrongPwd123' +
-#        ';database=ESPNCricInfo')
+conn = pyodbc.connect(
+       'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
+       ';SERVER=' + 'localhost,1433' + ';UID=' + 'sa' + 
+       ';PWD=' + 'dockerStrongPwd123' +
+       ';database=ESPNCricInfo')
 
 
 # # AZURE SQL
@@ -47,6 +47,11 @@ def authenticate():
     # Execute the stored procedure
     cursor.execute('EXEC GetUserDetails @username = ?, @password = ?', (username, password))
     result = cursor.fetchone()
+
+    print(username, password)
+
+
+
 
     if result:
         # Convert the result to a dictionary
