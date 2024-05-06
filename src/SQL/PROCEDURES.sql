@@ -1,6 +1,7 @@
 
 
 -- FETCH USER DATA
+CREATE PROCEDURE GetUserDetails
     @username NVARCHAR(50),
     @password NVARCHAR(50)
 AS
