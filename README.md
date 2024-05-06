@@ -45,6 +45,7 @@ Welcome to The Reincarnation of ESPNCricInfo, a modernized cricket platform desi
    ```bash
    npm install
    npm install react-modal
+   npm install reactjs-popup
    ```
 
 4. Set up environment variables:
