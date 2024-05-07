@@ -7,33 +7,109 @@ const PopupsPlayer = ({ player }) => {
     };
 
     return (
-        <div className="popup-container">
-            <h2>{displayValue(player.PlayerName)} Details</h2>
-            <ul>
-                <li><strong>Player ID:</strong> {displayValue(player.PlayerID)}</li>
-                <li><strong>Player Age:</strong> {displayValue(player.PlayerAge)}</li>
-                <li><strong>Player Role:</strong> {displayValue(player.PlayerRole)}</li>
-                <li><strong>Player Team:</strong> {displayValue(player.PlayerTeam)}</li>
-                <li><strong>Player Matches:</strong> {displayValue(player.PlayerMatches)}</li>
-                <li><strong>Player Runs:</strong> {displayValue(player.PlayerRuns)}</li>
-                <li><strong>Player Wickets:</strong> {displayValue(player.PlayerWickets)}</li>
-                <li><strong>Player Batting Average:</strong> {displayValue(player.BatAvg)}</li>
-                <li><strong>Player Batting Style:</strong> {displayValue(player.BatStyle)}</li>
-                <li><strong>Player Highest Score:</strong> {displayValue(player.HighestScore)}</li>
-                <li><strong>Player Matches:</strong> {displayValue(player._Matches)}</li>
-                <li><strong>Player Bat Innings:</strong> {displayValue(player._BatInnings)}</li>
-                <li><strong>Player Batting Strike Rate:</strong> {displayValue(player._BatSR)}</li>
-                <li><strong>Player Hundreds:</strong> {displayValue(player._Hundreds)}</li>
-                <li><strong>Player Fifties:</strong> {displayValue(player._Fifties)}</li>
-                <li><strong>Player Bowling Average:</strong> {displayValue(player._BowlAvg)}</li>
-                <li><strong>Player Bowling Style:</strong> {displayValue(player._BowlStyle)}</li>
-                <li><strong>Player Bowl Runs:</strong> {displayValue(player._BowlRuns)}</li>
-                <li><strong>Player Best Bowling Figure:</strong> {displayValue(player._BBF)}</li>
-                <li><strong>Player Bowl Innings:</strong> {displayValue(player._BowlInnings)}</li>
-                <li><strong>Player Bowling Strike Rate:</strong> {displayValue(player._BowlSR)}</li>
-                <li><strong>Player Five Wicket Haul:</strong> {displayValue(player._FiveWickets)}</li>
-                <li><strong>Player Ten Wicket Haul:</strong> {displayValue(player._TenWickets)}</li>
-            </ul>
+        <div className="popup-container" style={{ maxHeight: '530px', overflowY: 'auto' }}>
+            <h2 style={{position: 'sticky'}}>'{displayValue(player.PlayerName)}' Info</h2>
+            <h2>Personal Info</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Player ID</strong></td>
+                        <td>{displayValue(player.PlayerID)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Player Age</strong></td>
+                        <td>{displayValue(player.PlayerAge)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Player Role</strong></td>
+                        <td>{displayValue(player.PlayerRole)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Player Team</strong></td>
+                        <td>{displayValue(player.PlayerTeam)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Matches</strong></td>
+                        <td>{displayValue(player.PlayerMatches)}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <h2>Batting Stats</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Runs</strong></td>
+                        <td>{displayValue(player.PlayerRuns)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Batting Average</strong></td>
+                        <td>{displayValue(player.BatAvg)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Batting Style</strong></td>
+                        <td>{displayValue(player.BatStyle)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Highest Score</strong></td>
+                        <td>{displayValue(player.HighestScore)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bat Innings</strong></td>
+                        <td>{displayValue(player._BatInnings)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Batting Strike Rate</strong></td>
+                        <td>{displayValue(player._BatSR)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hundreds</strong></td>
+                        <td>{displayValue(player._Hundreds)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fifties</strong></td>
+                        <td>{displayValue(player._Fifties)}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <h2>Bowling Stats</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Bowling Average</strong></td>
+                        <td>{displayValue(player._BowlAvg)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bowling Style</strong></td>
+                        <td>{displayValue(player._BowlStyle)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bowl Runs</strong></td>
+                        <td>{displayValue(player._BowlRuns)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best Bowling Figure</strong></td>
+                        <td>{displayValue(player._BBF)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bowl Innings</strong></td>
+                        <td>{displayValue(player._BowlInnings)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bowling Strike Rate</strong></td>
+                        <td>{displayValue(player._BowlSR)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Five Wicket Haul</strong></td>
+                        <td>{displayValue(player._FiveWickets)}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ten Wicket Haul</strong></td>
+                        <td>{displayValue(player._TenWickets)}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };

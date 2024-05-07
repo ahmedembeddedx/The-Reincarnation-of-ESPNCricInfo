@@ -107,9 +107,21 @@ export default function Teams() {
                 onClose={closePopup}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: '#C2C2C2',
+                    height: '600px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '0 auto',
+                    border: '3px solid black'
+                }}
             >
+                <button onClick={closePopup} id="exitButton">x</button>
                 {selectedTeam && <PopupsTeam team={selectedTeam} />}
-                <button onClick={closePopup}>Close</button>
             </Popup>
 
             <br />

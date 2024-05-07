@@ -87,16 +87,31 @@ export default function Players() {
                 </table>
             </div>
 
-            {/* Popup for displaying selected player */}
+
             <Popup
                 open={isPopupOpen}
                 onClose={closePopup}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: '#C2C2C2',
+                    height: '600px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '0 auto',
+                    border: '3px solid black'
+                }}
             >
-                {selectedPlayer && <PopupsPlayer player={selectedPlayer} />}
-                <button onClick={closePopup}>Close</button>
+                <div>
+                    <button onClick={closePopup} id="exitButton">x</button>
+                    {selectedPlayer && <PopupsPlayer player={selectedPlayer} />}
+                </div>
             </Popup>
+
 
             <br />
             <br />
