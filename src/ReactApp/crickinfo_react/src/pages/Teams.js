@@ -111,7 +111,7 @@ export default function Teams() {
                     padding: '20px',
                     fontFamily: 'monospace',
                     width: '50%',
-                    backgroundColor: '#C2C2C2',
+                    backgroundColor: 'var(--whitish)', // Use CSS variable here
                     height: '600px',
                     display: 'grid',
                     borderRadius: '10px',

@@ -93,17 +93,18 @@ export default function Players() {
                 onClose={closePopup}
                 modal
                 closeOnDocumentClick
+                className={`popup ${isPopupOpen ? 'popup-enter' : 'popup-exit'}`}
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
                     width: '50%',
-                    backgroundColor: '#C2C2C2',
+                    backgroundColor: 'var(--whitish)', // Use CSS variable
                     height: '600px',
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '0 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
                 }}
             >
                 <div>

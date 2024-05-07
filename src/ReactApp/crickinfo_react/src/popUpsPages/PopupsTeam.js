@@ -8,19 +8,52 @@ const PopupsTeam = ({ team }) => {
 
     return (
         <div className="popup-team-container">
-            <h2>{displayValue(team.TeamName)} Details</h2>
-            <ul>
-                <li><strong>Team ID:</strong> {displayValue(team.TeamID)}</li>
-                <li><strong>Home Ground ID:</strong> {displayValue(team.HomeGroundID)}</li>
-                <li><strong>Abbreviation:</strong> {displayValue(team.Abbreviation)}</li>
-                <li><strong>Nickname:</strong> {displayValue(team.Nickname)}</li>
-                <li><strong>Upcoming Fixture ID:</strong> {displayValue(team.UpcomingFixtureID)}</li>
-                <li><strong>Upcoming Series ID:</strong> {displayValue(team.UpcomingSeriesID)}</li>
-                <li><strong>Wins:</strong> {displayValue(team.Wins)}</li>
-                <li><strong>Draws:</strong> {displayValue(team.Draws)}</li>
-                <li><strong>Losses:</strong> {displayValue(team.Losses)}</li>
-                <li><strong>Ranking Points:</strong> {displayValue(team.RankingPoints)}</li>
-            </ul>
+            <h2 className='h2-container'>{displayValue(team.TeamName)} Details</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td className="unique"><strong>Team ID</strong></td>
+                        <td className="unique">{displayValue(team.TeamID)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Home Ground ID</strong></td>
+                        <td className="unique">{displayValue(team.HomeGroundID)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Abbreviation</strong></td>
+                        <td className="unique">{displayValue(team.Abbreviation)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Nickname</strong></td>
+                        <td className="unique">{displayValue(team.Nickname)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Upcoming Fixture ID</strong></td>
+                        <td className="unique">{displayValue(team.UpcomingFixtureID)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Upcoming Series ID</strong></td>
+                        <td className="unique">{displayValue(team.UpcomingSeriesID)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Wins</strong></td>
+                        <td className="unique">{displayValue(team.Wins)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Draws</strong></td>
+                        <td className="unique">{displayValue(team.Draws)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Losses</strong></td>
+                        <td className="unique">{displayValue(team.Losses)}</td>
+                    </tr>
+                    <tr>
+                        <td className="unique"><strong>Ranking Points</strong></td>
+                        <td className="unique">{displayValue(team.RankingPoints)}</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     );
 };

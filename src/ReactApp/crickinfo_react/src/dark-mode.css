@@ -71,51 +71,53 @@ html {
 
 }
 
-.dark-mode-popup {
+/* .dark-mode-popup {
     padding: 20px;
     font-family: monospace;
     width: 50%;
-    background-color: #333; /* Dark background color */
-    color: #fff; /* Light text color */
-    height: 600px;
+    background-color: var(--greyish); /* Dark background color */
+    /* color: var(--black); Light text color */
+    /* height: 600px;
     display: grid;
     border-radius: 10px;
     font-size: large;
     margin: 0 auto;
     border: 3px solid black;
+} */ 
+
+/* CSS for the close button */
+#exitButton {
+    /* Color and background */
+    color: var(--black); /* Black color for contrast */
+    background-color: transparent; /* Transparent background */
+    
+    
+    width: 30px; 
+    height: 30px; 
+    padding: 0; 
+    border: none; 
+    border-radius: 50%; 
+    cursor: pointer; 
+    
+    
+    top: 10px; 
+    left: 10px; 
+    margin-bottom: 10px;
+    
+    font-size: 24px; 
+    line-height: 24px; 
+    font-weight: bold; 
+    
+    
+    transition: color 0.3s, transform 0.3s;
+    
+    
+    &:hover {
+        color: #FF0000;
+        transform: rotate(180deg);
+    }
 }
 
-
-#popup-content
-{
-    font-family: monospace;
-    padding: '20px';
-    width: '50%';
-    background-color: '#C2C2C2';
-    height: '600px';
-    display: 'grid';
-    border-radius: '10px';
-    font-size: 'large';
-    margin: '0 auto';
-    border: '3px solid black'
-}
-
-#exitButton
-{
-    margin: 10px;
-    font-family: monospace;
-    font-size: 100%;
-    height: 30px;
-    width: 5%;
-    text-align: center;
-    border: 0px solid transparent;
-    border-radius: 10px;
-    border: 3px solid transparent;
-    color: white;
-    background-color: red;
-    transition: 150ms ease-in, font-size 300ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out;
-    cursor: pointer;
-}
 #search:hover
 {
     border: 2px solid var(--whitish);
@@ -413,3 +415,50 @@ html {
       background-color:var(--whitish); 
       color: var(--greyish);
   }
+td.unique{
+    color: var(--greyish);
+    background-color: var(--whitish);
+    border-color: var(--greyish);
+}/*for all popups data*/
+
+.popup-container{
+    background-color: var(--whitish);
+}
+
+.h2-container{
+    color:var(--black)
+}
+
+.popup-content {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup .popup-enter-active {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup .popup-exit-active {
+    animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
