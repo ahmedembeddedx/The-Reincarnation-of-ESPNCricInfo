@@ -2,38 +2,37 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pyodbc
 from werkzeug.security import check_password_hash, generate_password_hash
+import platform
 
 app = Flask(__name__)
-
-# WINDOWS
-conn_str = (
-    r'DRIVER={ODBC Driver 17 for SQL Server};'
-    r'SERVER=DESKTOP-50DO7J6;'
-    r'DATABASE=ESPNCrickInfo;'
-    r'Trusted_Connection=yes;'
-)
-conn = pyodbc.connect(conn_str)
-
-# MAC
-# conn = pyodbc.connect(
-#        'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
-#        ';SERVER=' + 'localhost,1433' + ';UID=' + 'sa' + 
-#        ';PWD=' + 'dockerStrongPwd123' +
-#        ';database=ESPNCricInfo')
-
-
-# # AZURE SQL
-# server = 'ahmedhost.database.windows.net'
-# database = 'ESPNCricInfo'
-# username = 'ahmedsql'
-# password = 'pancakes123$$'
-# driver= '/opt/homebrew/lib/libmsodbcsql.17.dylib'
-# conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-
-
-cursor = conn.cursor()
-
 CORS(app)
+
+
+def get_connection_string():
+    if platform.system() == "Windows":
+        return (
+            r'DRIVER={ODBC Driver 17 for SQL Server};'
+            r'SERVER=DESKTOP-50DO7J6;'
+            r'DATABASE=ESPNCrickInfo;'
+            r'Trusted_Connection=yes;'
+        )
+    elif platform.system() == "Darwin":
+        return (
+            'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
+            ';SERVER=localhost,1433;' + 
+            ';UID=sa;' + 
+            ';PWD=dockerStrongPwd123;' +
+            ';database=ESPNCricInfo'
+        )
+    else:
+        raise ValueError("Unsupported platform")
+
+# Get the connection string based on the current platform
+conn_str = get_connection_string()
+
+# Connect to the database
+conn = pyodbc.connect(conn_str)
+cursor = conn.cursor()
 
 
 #login
