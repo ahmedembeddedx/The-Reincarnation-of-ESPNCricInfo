@@ -96,6 +96,49 @@ def get_team_data():
 
     # Return the data list as a JSON response
     return jsonify(data_list)
+@app.route('/api/addteams', methods=['POST'])
+def add_team():
+    try:
+        # Extract team data from request body
+        data = request.get_json()
+        print(data)
+        _Name = data.get('_Name')
+        _Abbreviation = data.get('_Abbreviation')
+        _HomeGroundID = data.get('_HomeGroundID')
+        _Nick = data.get('_Nick')
+        _UpcomingFixtureID = data.get('_UpcomingFixtureID')
+        _UpcomingSeriesID = data.get('_UpcomingSeriesID')
+        _Wins = data.get('_Wins')
+        _Draws = data.get('_Draws')
+        _Loss = data.get('_Loss')
+        _RankingPoints = data.get('_RankingPoints')
+
+        # Execute the stored procedure to add the team
+        cursor.execute(
+            "EXEC add_team ?,?,?,?,?,?,?,?,?,?",(
+                _Name,
+                _Abbreviation,
+                _HomeGroundID,
+                _Nick,
+                _UpcomingFixtureID,
+                _UpcomingSeriesID,
+                _Wins,
+                _Draws,
+                _Loss,
+                _RankingPoints
+            )
+        )
+
+        
+        # Commit the transaction
+        conn.commit()
+        
+        # Return a success response
+        return jsonify({'message': 'Team added successfully'}), 201
+    
+    except Exception as e:
+        # If an error occurs, return an error response
+        return jsonify({'error': str(e)}), 400
 
 
 #Matches
@@ -155,7 +198,103 @@ def get_Playerdata():
     columns = [column[0] for column in cursor.description]
     data_list = [dict(zip(columns, row)) for row in data]
     return jsonify(data_list)
+
+@app.route('/api/addplayers',methods=['POST']) 
+def insert_player():
+    # Get data from the request body
+    data = request.json
     
+    # Extract the data to pass as parameters to the stored procedure
+    team_id = data.get('_TeamID')
+    name = data.get('_Name')
+    age = data.get('_Age')
+    country = data.get('_Country')
+    role_id = data.get('_RoleID')
+    bat_avg = data.get('_BatAvg')
+    batting_style = data.get('_BattingStyle')
+    bat_runs = data.get('_BatRuns')
+    hs = data.get('_HS')
+    matches = data.get('_Matches')
+    bat_innings = data.get('_BatInnings')
+    bat_sr = data.get('_BatSR')
+    hundreds = data.get('_Hundreds')
+    fifties = data.get('_Fifties')
+    bowl_avg = data.get('_BowlAvg')
+    bowling_style = data.get('_BowlingStyle')
+    wickets = data.get('_Wickets')
+    bowl_runs = data.get('_BowlRuns')
+    bbf = data.get('_BBF')
+    bowl_innings = data.get('_BowlInnings')
+    bowl_sr = data.get('_BowlSR')
+    five_wickets = data.get('_FiveWickets')
+    ten_wickets = data.get('_TenWickets')
+    last_match_id = data.get('_LastMatchID')
+
+    try:
+        cursor.execute(
+            'EXEC add_player ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?',
+            (
+                team_id,
+                name,
+                age,
+                country,
+                role_id,
+                bat_avg,
+                batting_style,
+                bat_runs,
+                hs,
+                matches,
+                bat_innings,
+                bat_sr,
+                hundreds,
+                fifties,
+                bowl_avg,
+                bowling_style,
+                wickets,
+                bowl_runs,
+                bbf,
+                bowl_innings,
+                bowl_sr,
+                five_wickets,
+                ten_wickets,
+                last_match_id
+            )
+        )
+        conn.commit()
+        return jsonify({'success': True, 'message': 'Player added successfully.'}), 200
+    except pyodbc.Error as error:
+        conn.rollback()
+        print('Error:', error)
+        return jsonify({'success': False, 'message': 'Failed to add player.'}), 500
+
+
+#Add Series
+@app.route('/api/addseries', methods=['POST'])
+def add_series():
+    try:
+        # Extract series data from request body
+        data = request.get_json()
+        print(data)
+        _Team1ID = data.get('_Team1ID')
+        _Team2ID = data.get('_Team2ID')
+        _Date = data.get('_Date')
+        _VenueID = data.get('_VenueID')
+
+        # Execute the stored procedure to add the series
+        cursor.execute(
+            "EXEC add_series ?, ?, ?, ?",
+            (_Team1ID, _Team2ID, _Date, _VenueID)
+        )
+
+        # Commit the transaction
+        conn.commit()
+
+        # Return a success response
+        return jsonify({'message': 'Series added successfully'}), 201
+    
+    except Exception as e:
+        # If an error occurs, return an error response
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
