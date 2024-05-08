@@ -169,7 +169,6 @@ def get_match_data():
 
 #Players
 @app.route('/api/players',methods=['GET'])
-
 def get_Playerdata():
     query = '''
         SELECT PlayerData._Name AS PlayerName, 
@@ -295,6 +294,36 @@ def add_series():
     except Exception as e:
         # If an error occurs, return an error response
         return jsonify({'error': str(e)}), 400
+
+
+
+@app.route('/api/addmatches', methods=['POST'])
+def add_match():
+    try:
+        # Extract match data from the request body
+        data = request.get_json()
+        print(data)
+        team1_id = data.get('_Team1ID')
+        team2_id = data.get('_Team2ID')
+        date = data.get('_Date')
+        venue_id = data.get('_VenueID')
+
+        # Execute the stored procedure to add the match
+        cursor.execute(
+            'EXEC add_match ?, ?, ?, ?',
+            (team1_id, team2_id, date, venue_id)
+        )
+        
+        # Commit the transaction
+        conn.commit()
+        
+        # Return a success response
+        return jsonify({'message': 'Match added successfully'}), 201
+    
+    except Exception as e:
+        # If an error occurs, return an error response
+        return jsonify({'error': str(e)}), 400
+
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

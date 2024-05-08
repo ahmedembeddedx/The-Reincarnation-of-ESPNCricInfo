@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 import AddPlayerForm from './CRUDPages/AddPlayerForm';
 import AddTeamForm from './CRUDPages/AddTeamForm';
-import AddSeriesForm from './CRUDPages/AddSeriesForm'; // Import the AddSeriesForm component
+import AddSeriesForm from './CRUDPages/AddSeriesForm';
+import AddMatchForm from './CRUDPages/AddMatchForm'; // Import the AddMatchForm component
 
 export default function Admin() {
     // State variable to control the Add Player form modal
@@ -11,6 +12,8 @@ export default function Admin() {
     const [isAddTeamFormOpen, setIsAddTeamFormOpen] = useState(false);
     // State variable to control the Add Series form modal
     const [isAddSeriesFormOpen, setIsAddSeriesFormOpen] = useState(false);
+    // State variable to control the Add Match form modal
+    const [isAddMatchFormOpen, setIsAddMatchFormOpen] = useState(false);
 
     // Function to open the Add Player form
     const openAddPlayerForm = () => {
@@ -42,6 +45,16 @@ export default function Admin() {
         setIsAddSeriesFormOpen(false);
     };
 
+    // Function to open the Add Match form
+    const openAddMatchForm = () => {
+        setIsAddMatchFormOpen(true);
+    };
+
+    // Function to close the Add Match form
+    const closeAddMatchForm = () => {
+        setIsAddMatchFormOpen(false);
+    };
+
     return (
         <div>
             <h3>Admin Options</h3>
@@ -57,8 +70,10 @@ export default function Admin() {
                         <td>
                             <button onClick={openAddSeriesForm}>Add Series</button>
                         </td>
+                        <td>
+                            <button onClick={openAddMatchForm}>Add Match</button>
+                        </td>
                     </tr>
-                    {/* Add more buttons as necessary */}
                 </tbody>
             </table>
 
@@ -98,6 +113,19 @@ export default function Admin() {
                 <div>
                     <button onClick={closeAddSeriesForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
                     <AddSeriesForm onClose={closeAddSeriesForm} />
+                </div>
+            </Popup>
+
+            {/* Popup for adding a match */}
+            <Popup
+                open={isAddMatchFormOpen}
+                onClose={closeAddMatchForm}
+                modal
+                closeOnDocumentClick
+            >
+                <div>
+                    <button onClick={closeAddMatchForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <AddMatchForm onClose={closeAddMatchForm} />
                 </div>
             </Popup>
 
