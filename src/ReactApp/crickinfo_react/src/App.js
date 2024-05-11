@@ -17,7 +17,7 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true);
-    setCurrentPage('updates');
+    setCurrentPage('admin');
   };
 
   const handleNavigate = (page) => {

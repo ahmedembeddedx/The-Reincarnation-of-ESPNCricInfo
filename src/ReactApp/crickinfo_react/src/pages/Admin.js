@@ -3,57 +3,32 @@ import Popup from 'reactjs-popup';
 import AddPlayerForm from './CRUDPages/AddPlayerForm';
 import AddTeamForm from './CRUDPages/AddTeamForm';
 import AddSeriesForm from './CRUDPages/AddSeriesForm';
-import AddMatchForm from './CRUDPages/AddMatchForm'; // Import the AddMatchForm component
+import AddMatchForm from './CRUDPages/AddMatchForm';
+import AddNewsForm from './CRUDPages/AddNewsForm'; // Import the AddNewsForm component
 
 export default function Admin() {
-    // State variable to control the Add Player form modal
+    // State variables to control the form modals
     const [isAddPlayerFormOpen, setIsAddPlayerFormOpen] = useState(false);
-    // State variable to control the Add Team form modal
     const [isAddTeamFormOpen, setIsAddTeamFormOpen] = useState(false);
-    // State variable to control the Add Series form modal
     const [isAddSeriesFormOpen, setIsAddSeriesFormOpen] = useState(false);
-    // State variable to control the Add Match form modal
     const [isAddMatchFormOpen, setIsAddMatchFormOpen] = useState(false);
+    const [isAddNewsFormOpen, setIsAddNewsFormOpen] = useState(false);
 
-    // Function to open the Add Player form
-    const openAddPlayerForm = () => {
-        setIsAddPlayerFormOpen(true);
-    };
+    // Functions to open and close the forms
+    const openAddPlayerForm = () => setIsAddPlayerFormOpen(true);
+    const closeAddPlayerForm = () => setIsAddPlayerFormOpen(false);
 
-    // Function to close the Add Player form
-    const closeAddPlayerForm = () => {
-        setIsAddPlayerFormOpen(false);
-    };
+    const openAddTeamForm = () => setIsAddTeamFormOpen(true);
+    const closeAddTeamForm = () => setIsAddTeamFormOpen(false);
 
-    // Function to open the Add Team form
-    const openAddTeamForm = () => {
-        setIsAddTeamFormOpen(true);
-    };
+    const openAddSeriesForm = () => setIsAddSeriesFormOpen(true);
+    const closeAddSeriesForm = ()=> setIsAddSeriesFormOpen(false);
 
-    // Function to close the Add Team form
-    const closeAddTeamForm = () => {
-        setIsAddTeamFormOpen(false);
-    };
+    const openAddMatchForm = () => setIsAddMatchFormOpen(true);
+    const closeAddMatchForm = () => setIsAddMatchFormOpen(false);
 
-    // Function to open the Add Series form
-    const openAddSeriesForm = () => {
-        setIsAddSeriesFormOpen(true);
-    };
-
-    // Function to close the Add Series form
-    const closeAddSeriesForm = () => {
-        setIsAddSeriesFormOpen(false);
-    };
-
-    // Function to open the Add Match form
-    const openAddMatchForm = () => {
-        setIsAddMatchFormOpen(true);
-    };
-
-    // Function to close the Add Match form
-    const closeAddMatchForm = () => {
-        setIsAddMatchFormOpen(false);
-    };
+    const openAddNewsForm = () => setIsAddNewsFormOpen(true);
+    const closeAddNewsForm = () => setIsAddNewsFormOpen(false);
 
     return (
         <div>
@@ -72,6 +47,9 @@ export default function Admin() {
                         </td>
                         <td>
                             <button onClick={openAddMatchForm}>Add Match</button>
+                        </td>
+                        <td>
+                            <button onClick={openAddNewsForm}>Add News</button>
                         </td>
                     </tr>
                 </tbody>
@@ -126,6 +104,19 @@ export default function Admin() {
                 <div>
                     <button onClick={closeAddMatchForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
                     <AddMatchForm onClose={closeAddMatchForm} />
+                </div>
+            </Popup>
+
+            {/* Popup for adding news */}
+            <Popup
+                open={isAddNewsFormOpen}
+                onClose={closeAddNewsForm}
+                modal
+                closeOnDocumentClick
+            >
+                <div>
+                    <button onClick={closeAddNewsForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <AddNewsForm onClose={closeAddNewsForm} />
                 </div>
             </Popup>
 

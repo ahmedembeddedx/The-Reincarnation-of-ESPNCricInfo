@@ -1,34 +1,80 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Updates() {
-  return (
-    <div>
-        <h3>Updates Data</h3>
-        <input type="text" id="search" placeholder="Find News..." />
-        <button id="searchButton">Search</button>
-        <div id="FormTable">
-            <tr>
-                <h2>Highlights of Babar Azam Daddy Ton Against NZ (2024-03-10)</h2>
-                <p className="news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias cupiditate vero aliquam ipsam veniam modi nesciunt, distinctio corporis assumenda amet quis tempore saepe, dolor molestiae ducimus, dicta exercitationem corrupti et.</p>
-            </tr>
-            <tr>
-                <h2>India vs Pakistan Match Preview (2023-02-11)</h2>
-                <p className="news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias cupiditate vero aliquam ipsam veniam modi nesciunt, distinctio corporis assumenda amet quis tempore saepe, dolor molestiae ducimus, dicta exercitationem corrupti et.</p>
-            </tr>
-            <tr>
-                <h2>England vs Australia Match Preview (2023-01-14)</h2>
-                <p className="news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias cupiditate vero aliquam ipsam veniam modi nesciunt, distinctio corporis assumenda amet quis tempore saepe, dolor molestiae ducimus, dicta exercitationem corrupti et.</p>
-            </tr>
-        </div>
+    const [newsData, setNewsData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredNewsData, setFilteredNewsData] = useState([]);
 
-        <br/>
-        <br/>
-        <hr/>
-        <footer>
-            <p>ESPNCricInfo Reincarnated</p>
-            <p>Copyright 2024. All Rights Reserved.</p>
-            <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/"><img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40"/></a>
-        </footer>
-    </div>
-  )
+    useEffect(() => {
+        // Fetch news data from the backend API
+        axios.get('http://127.0.0.1:5000/api/news')
+            .then(response => {
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    setNewsData(response.data);
+                    // Initially set the filtered news data to the fetched data
+                    setFilteredNewsData(response.data);
+                } else {
+                    console.error('API response data is empty or not an array.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching news data:', error);
+            });
+    }, []);
+
+    // Handle search input changes
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    // Filter news data based on the search query
+    useEffect(() => {
+        const filteredData = newsData.filter(newsItem =>
+            newsItem.headline.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            newsItem.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            newsItem.playername.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredNewsData(filteredData);
+    }, [searchQuery, newsData]);
+
+    return (
+        <div>
+            <h3>Updates Data</h3>
+            <input
+                type="text"
+                id="search"
+                placeholder="Find News..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
+            <div id="FormTable">
+                {/* Map through the filtered news data and render each news item */}
+                <table>
+                    <tbody>
+                        {filteredNewsData.map((newsItem, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <h2>{newsItem.headline}</h2>
+                                    <p className="news">{newsItem.text}</p>
+                                    <p><strong>Date:</strong> {newsItem.date}</p>
+                                    <p><strong>Player Name:</strong> {newsItem.playername}</p>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <br />
+            <hr />
+            <footer>
+                <p>ESPNCricInfo Reincarnated</p>
+                <p>Copyright 2024. All Rights Reserved.</p>
+                <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/">
+                    <img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40" />
+                </a>
+            </footer>
+        </div>
+    );
 }

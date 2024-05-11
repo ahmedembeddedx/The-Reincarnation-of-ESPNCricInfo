@@ -3,6 +3,7 @@ from flask_cors import CORS
 import pyodbc
 from werkzeug.security import check_password_hash, generate_password_hash
 import platform
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +14,7 @@ def get_connection_string():
         return (
             r'DRIVER={ODBC Driver 17 for SQL Server};'
             r'SERVER=DESKTOP-50DO7J6;'
-            r'DATABASE=ESPNCrickInfo;'
+            r'DATABASE=ESPNCricInfo;'
             r'Trusted_Connection=yes;'
         )
     elif platform.system() == "Darwin":
@@ -34,7 +35,7 @@ conn_str = get_connection_string()
 conn = pyodbc.connect(conn_str)
 cursor = conn.cursor()
 
-
+global_user_name = 'alicee'
 #login
 @app.route('/api/authenticate', methods=['POST'])
 def authenticate():
@@ -42,18 +43,15 @@ def authenticate():
     data = request.json
     username = data.get('username')
     password = data.get('password')
-
+    
     # Execute the stored procedure
     cursor.execute('EXEC GetUserDetails @username = ?, @password = ?', (username, password))
     result = cursor.fetchone()
-
+    global_user_name = result[0]
     print(username, password)
 
-
-
-
     if result:
-        # Convert the result to a dictionary
+
         user_data = {
             'username': result[0],
             'name': result[1],
@@ -67,6 +65,9 @@ def authenticate():
     else:
         # Return failure response
         return jsonify({'success': False, 'message': 'Invalid credentials'})
+
+
+
 #Team
 @app.route('/api/teams', methods=['GET'])
 def get_team_data():
@@ -323,7 +324,66 @@ def add_match():
     except Exception as e:
         # If an error occurs, return an error response
         return jsonify({'error': str(e)}), 400
+    
+
+@app.route('/api/news', methods=['GET'])
+def fetch_news_data():
+    
+    # Define the query to fetch news data, including headline, text, date, and player name
+    query = """
+        SELECT NewsData._Headline AS headline,
+               NewsData._Text AS text,
+               NewsData._Date AS date,
+               UserData._Name AS playername
+        FROM NewsData
+        JOIN UserData ON NewsData._UserID = UserData._UserName;
+    """
+    
+    # Execute the query
+    cursor = conn.execute(query)
+    news_rows = cursor.fetchall()
+    
+    print(news_rows)
+    # Convert the rows to a list of dictionaries
+    news_data = []
+    for row in news_rows:
+        news_data.append({
+            "headline": row.headline,
+            "text": row.text,
+            "date": row.date,
+            "playername": row.playername
+        })
+    return jsonify(news_data)
 
 
+@app.route('/api/addnews', methods=['POST'])
+def add_news():
+    try:
+        # Extract news data from request body
+        data = request.get_json()
+        print(data)
+        headline = data.get('_Headline')
+        text = data.get('_Text')
+        user_id = global_user_name
+        print(user_id)
+        
+        
+
+        # Execute the stored procedure to add the news entry
+        cursor.execute(
+            'EXEC add_news ?, ?, ?',
+            (headline, text, user_id)
+        )
+        
+        # Commit the transaction
+        conn.commit()
+        
+        # Return a success response
+        return jsonify({'message': 'News added successfully'}), 201
+    
+    except Exception as e:
+        # If an error occurs, return an error response
+        print(f"Error adding news: {e}")
+        return jsonify({'error': str(e)}), 400
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
