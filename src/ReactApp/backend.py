@@ -385,5 +385,67 @@ def add_news():
         # If an error occurs, return an error response
         print(f"Error adding news: {e}")
         return jsonify({'error': str(e)}), 400
+    
+@app.route('/api/getplayercolumns', methods=['GET'])
+def fetch_player_columns():
+    try:
+        # Get column names from PlayerData table
+        cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'PlayerData'")
+        columns = [row[0] for row in cursor.fetchall()]
+
+        # Return column names as JSON response
+        return jsonify({'columns': columns})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+    
+
+@app.route('/api/updateplayercolumns',methods=['POST'])
+def update_player():
+    try:
+        data = request.get_json()
+        columnName = data.get('columnName')
+        ID = data.get('id')
+        newValue = data.get('newValue')  # Corrected from `date` to `data`
+
+        cursor.execute("EXEC UpdatePlayerColumn ?, ?, ?", (columnName, ID, newValue))
+        conn.commit()
+        return jsonify({'message': 'Player updated successfully'}), 201
+    
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+
+
+@app.route('/api/getteamcolumns', methods=['GET'])
+def fetch_team_column():
+    try:
+        # Get column names from PlayerData table
+        cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'TeamData'")
+        columns = [row[0] for row in cursor.fetchall()]
+
+        # Return column names as JSON response
+        return jsonify({'columns': columns})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/updateteamcolumns',methods=['POST'])
+def update_team():
+    try:
+        data = request.json
+        column_name = data.get('columnName')
+        team_id = data.get('id')
+        new_value = data.get('newValue')
+
+        # Execute the stored procedure to update the column
+        cursor.execute("EXEC UpdateTeamColumn ?, ?, ?", (column_name, team_id, new_value))
+        conn.commit()
+
+        return jsonify({'message': 'Team column updated successfully'}), 201
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+    
+    
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

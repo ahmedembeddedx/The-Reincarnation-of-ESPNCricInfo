@@ -4,7 +4,8 @@ import AddPlayerForm from './CRUDPages/AddPlayerForm';
 import AddTeamForm from './CRUDPages/AddTeamForm';
 import AddSeriesForm from './CRUDPages/AddSeriesForm';
 import AddMatchForm from './CRUDPages/AddMatchForm';
-import AddNewsForm from './CRUDPages/AddNewsForm'; // Import the AddNewsForm component
+import AddNewsForm from './CRUDPages/AddNewsForm';
+import UpdatePlayer from './CRUDPages/UpdatePlayerForm'; // Import the UpdatePlayerForm component
 
 export default function Admin() {
     // State variables to control the form modals
@@ -13,8 +14,11 @@ export default function Admin() {
     const [isAddSeriesFormOpen, setIsAddSeriesFormOpen] = useState(false);
     const [isAddMatchFormOpen, setIsAddMatchFormOpen] = useState(false);
     const [isAddNewsFormOpen, setIsAddNewsFormOpen] = useState(false);
+    const [isUpdatePlayerFormOpen, setIsUpdatePlayerFormOpen] = useState(false);
+    
+    const openUpdatePlayerForm = () => setIsUpdatePlayerFormOpen(true);
+    const closeUpdatePlayerForm = () => setIsUpdatePlayerFormOpen(false);
 
-    // Functions to open and close the forms
     const openAddPlayerForm = () => setIsAddPlayerFormOpen(true);
     const closeAddPlayerForm = () => setIsAddPlayerFormOpen(false);
 
@@ -50,6 +54,9 @@ export default function Admin() {
                         </td>
                         <td>
                             <button onClick={openAddNewsForm}>Add News</button>
+                        </td>
+                        <td>
+                            <button onClick={openUpdatePlayerForm}>Update Player</button> {/* No function call here */}
                         </td>
                     </tr>
                 </tbody>
@@ -119,6 +126,19 @@ export default function Admin() {
                     <AddNewsForm onClose={closeAddNewsForm} />
                 </div>
             </Popup>
+
+            {/* Popup for updating a player */}
+            <Popup
+                open={isUpdatePlayerFormOpen}
+                onClose={closeUpdatePlayerForm}
+                modal
+                closeOnDocumentClick
+            >
+                <div>
+                    <button onClick={closeUpdatePlayerForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <UpdatePlayer onClose={closeUpdatePlayerForm} />
+                </div>
+            </Popup>    
 
             <footer>
                 <p>ESPNCricInfo Reincarnated</p>

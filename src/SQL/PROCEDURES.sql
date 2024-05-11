@@ -181,37 +181,25 @@ END;
 
 
 -- UPDATE PLAYER
-CREATE PROCEDURE update_player
-    @_PlayerID INT,
-    @_TeamID INT,
-    @_Name VARCHAR(20),
-    @_Age INT,
-    @_Country VARCHAR(30),
-    @_RoleID INT,
-    @_BatAvg FLOAT,
-    @_BattingStyle VARCHAR(30),
-    @_BatRuns INT,
-    @_HS INT,
-    @_Matches INT,
-    @_BatInnings INT,
-    @_BatSR FLOAT,
-    @_Hundreds INT,
-    @_Fifties INT,
-    @_BowlAvg FLOAT,
-    @_BowlingStyle VARCHAR(30),
-    @_Wickets INT,
-    @_BowlRuns INT,
-    @_BBF VARCHAR(30),
-    @_BowlInnings INT,
-    @_BowlSR FLOAT,
-    @_FiveWickets INT,
-    @_TenWickets INT,
-    @_LastMatchID INT
+CREATE PROCEDURE UpdatePlayerColumn
+    @ColumnName NVARCHAR(100),
+    @ID INT,
+    @NewValue NVARCHAR(255)
 AS
 BEGIN
-    UPDATE PlayerData
-    SET _TeamID = @_TeamID, _Name = @_Name, _Age = @_Age, _Country = @_Country, _RoleID = @_RoleID, _BatAvg = @_BatAvg, _BattingStyle = @_BattingStyle, _BatRuns = @_BatRuns, _HS = @_HS, _Matches = @_Matches, _BatInnings = @_BatInnings, _BatSR = @_BatSR, _Hundreds = @_Hundreds, _Fifties = @_Fifties, _BowlAvg = @_BowlAvg, _BowlingStyle = @_BowlingStyle, _Wickets = @_Wickets, _BowlRuns = @_BowlRuns, _BBF = @_BBF, _BowlInnings = @_BowlInnings, _BowlSR = @_BowlSR, _FiveWickets = @_FiveWickets, _TenWickets = @_TenWickets, _LastMatchID = @_LastMatchID
-    WHERE _PlayerID = @_PlayerID;
+    DECLARE @SQL NVARCHAR(MAX);
+
+    -- Constructing dynamic SQL to update the specified column
+    SET @SQL = '
+        UPDATE PlayerData
+        SET ' + QUOTENAME(@ColumnName) + ' = @NewValue
+        WHERE _PlayerID = @ID;';
+
+    -- Executing the dynamic SQL
+    EXEC sp_executesql @SQL,
+                       N'@NewValue NVARCHAR(255), @ID INT',
+                       @NewValue,
+                       @ID;
 END;
 
 -- UPDATE TEAM
