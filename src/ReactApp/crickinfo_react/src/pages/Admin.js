@@ -225,7 +225,7 @@ export default function Admin() {
                     fontFamily: 'monospace',
                     width: '50%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '250px',
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',

@@ -25,7 +25,8 @@ export default function DeleteTeamForm({ onClose }) {
                 value={teamId}
                 onChange={(e) => setTeamId(e.target.value)}
             />
-            <button onClick={handleDelete}>Confirm Delete</button>
+            <br/>
+            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
         </div>
     );
 }

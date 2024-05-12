@@ -74,8 +74,6 @@ export default function AddPlayerForm({ onClose }) {
                 {/* Add a submit button */}
                 <button type="submit">Add Player</button>
             </form>
-            {/* Add a close button */}
-            <button onClick={onClose}>Close</button>
         </div>
     );
 }
