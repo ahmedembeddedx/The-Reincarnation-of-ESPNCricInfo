@@ -248,7 +248,7 @@ END;
 
 
 -- UPDATE SERIES
-CREATE PROCEDURE UpdateMatchColumn
+CREATE PROCEDURE UpdateSeriesColumn
     @ColumnName NVARCHAR(100),
     @ID INT,
     @NewValue NVARCHAR(255)
@@ -258,7 +258,7 @@ BEGIN
 
     -- Constructing dynamic SQL to update the specified column
     SET @SQL = '
-        UPDATE FixtureData
+        UPDATE SeriesData
         SET ' + QUOTENAME(@ColumnName) + ' = @NewValue
         WHERE _FixtureID = @ID;';
 
