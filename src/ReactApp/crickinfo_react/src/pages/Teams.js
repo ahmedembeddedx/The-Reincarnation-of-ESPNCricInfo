@@ -53,6 +53,9 @@ export default function Teams() {
         setIsPopupOpen(false);
         setSelectedTeam(null);
     };
+    const renderCellValue = (value) => {
+        return value ? value : 'N/A';
+    };
 
     return (
         <div>
@@ -84,18 +87,20 @@ export default function Teams() {
                     <tbody>
                         {filteredTeams.map(team => (
                             <tr key={team.TeamID}>
-                                <td onClick={() => openPopup(team)} className='hover-on-data'>{team.TeamName }</td>
-                                <td>{team.TeamID}</td>
-                                <td>{team.HomeGroundID}</td>
-                                <td>{team.Abbreviation}</td>
-                                <td>{team.Nickname}</td>
-                                <td>{team.UpcomingFixtureID}</td>
-                                <td>{team.UpcomingSeriesID}</td>
-                                <td>{team.Wins}</td>
-                                <td>{team.Draws}</td>
-                                <td>{team.Losses}</td>
-                                <td>{team.RankingPoints}</td>
-                            </tr>
+                                <td onClick={() => openPopup(team)} className='hover-on-data'>
+                                {renderCellValue(team.TeamName)}
+                                </td>
+                                <td>{renderCellValue(team.TeamID)}</td>
+                                <td>{renderCellValue(team.HomeGroundID)}</td>
+                                <td>{renderCellValue(team.Abbreviation)}</td>
+                                <td>{renderCellValue(team.Nickname)}</td>
+                                <td>{renderCellValue(team.UpcomingFixtureID)}</td>
+                                <td>{renderCellValue(team.UpcomingSeriesID)}</td>
+                                <td>{renderCellValue(team.Wins)}</td>
+                                <td>{renderCellValue(team.Draws)}</td>
+                                <td>{renderCellValue(team.Losses)}</td>
+                                <td>{renderCellValue(team.RankingPoints)}</td>
+                          </tr>
                         ))}
                     </tbody>
                 </table>

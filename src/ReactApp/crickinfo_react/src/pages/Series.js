@@ -22,6 +22,9 @@ export default function Series() {
         setSearchQuery(e.target.value);
     };
 
+    const renderCellValue = (value) => {
+        return value ? value : 'N/A';
+    };
     const filteredSeries = seriesData.filter(series =>
         series.SeriesName.toLowerCase().includes(searchQuery.toLowerCase())||
         series.SeriesVenue.toLowerCase().includes(searchQuery.toLowerCase())||
@@ -54,13 +57,13 @@ export default function Series() {
                     <tbody>
                         {filteredSeries.map(series => (
                             <tr key={series.SeriesID}>
-                                <td>{series.SeriesName}</td>
-                                <td>{series.SeriesID}</td>
-                                <td>{series.VenueID}</td>
-                                <td>{series.SeriesStartDate}</td>
-                                <td>{series.SeriesEndDate}</td>
-                                <td>{series.SeriesVenue}</td>
-                            </tr>
+                                <td>{renderCellValue(series.SeriesName)}</td>
+                                <td>{renderCellValue(series.SeriesID)}</td>
+                                <td>{renderCellValue(series.VenueID)}</td>
+                                <td>{renderCellValue(series.SeriesStartDate)}</td>
+                                <td>{renderCellValue(series.SeriesEndDate)}</td>
+                                <td>{renderCellValue(series.SeriesVenue)}</td>
+                          </tr>
                         ))}
                     </tbody>
                 </table>
