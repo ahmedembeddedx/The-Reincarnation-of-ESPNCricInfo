@@ -47,6 +47,17 @@ CREATE TABLE FixtureData
     FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
+CREATE TABLE NewsData
+(
+    _Headline VARCHAR(100) NOT NULL,
+    _Text VARCHAR(200) NOT NULL,
+    _UserID VARCHAR(30),
+    _Date DATETIME NOT NULL,
+    PRIMARY KEY (_Date),
+    FOREIGN KEY (_UserID) REFERENCES UserData(_UserName) ON DELETE SET NULL
+);
+
+
 CREATE TABLE SeriesData
 (
     _SeriesID INT IDENTITY(1,1),
@@ -59,15 +70,7 @@ CREATE TABLE SeriesData
     FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
 
-CREATE TABLE NewsData
-(
-    _Headline VARCHAR(100) NOT NULL,
-    _Text VARCHAR(200) NOT NULL,
-    _UserID VARCHAR(30),
-    _Date DATETIME NOT NULL,
-    PRIMARY KEY (_Date),
-    FOREIGN KEY (_UserID) REFERENCES UserData(_UserName) ON DELETE SET NULL
-);
+
 
 CREATE TABLE TeamData
 (    

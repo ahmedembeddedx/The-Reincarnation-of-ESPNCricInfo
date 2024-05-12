@@ -66,7 +66,7 @@ VALUES
 (8, 3, '2024-04-05 13:00:00', 2);
 
 -- SeriesData
-INSERT INTO SeriesData (_VenueID,_SeriesName, _SeriesStartDate, _SeriesEndDate, _SeriesVenue) 
+INSERT INTO SeriesData (_VenueID, _SeriesName, _SeriesStartDate, _SeriesEndDate, _SeriesVenue) 
 VALUES 
 (1,'Ashes Test Series', '2024-07-01', '2024-08-15', 'Lord''s Cricket Ground'),
     (2,'Indian Premier League', '2024-04-01', '2024-05-30', 'Wankhede Stadium'),
