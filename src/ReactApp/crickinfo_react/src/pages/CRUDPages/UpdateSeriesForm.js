@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function UpdateTeamForm({ onClose }) {
-    const [teamId, setTeamId] = useState('');
+export default function UpdateSeriesForm({ onClose }) {
+    const [seriesId, setSeriesId] = useState('');
     const [selectedColumn, setSelectedColumn] = useState('');
     const [newValue, setNewValue] = useState('');
     const [columns, setColumns] = useState([]);
@@ -10,10 +10,10 @@ export default function UpdateTeamForm({ onClose }) {
     const [success, setSuccess] = useState('');
 
     useEffect(() => {
-        // Fetch all column names from the backend for TeamData
+        // Fetch all column names from the backend for SeriesData
         const fetchColumns = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/api/getteamcolumns');
+                const response = await axios.get('http://127.0.0.1:5000/api/getseriescolumns');
                 setColumns(response.data.columns);
             } catch (error) {
                 console.error('Error fetching columns:', error);
@@ -31,42 +31,42 @@ export default function UpdateTeamForm({ onClose }) {
             setSelectedColumn(value);
         } else if (name === 'newValue') {
             setNewValue(value);
-        } else if (name === 'teamId') {
-            setTeamId(value);
+        } else if (name === 'seriesId') {
+            setSeriesId(value);
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!teamId || !selectedColumn || !newValue) {
+        if (!seriesId || !selectedColumn || !newValue) {
             setError('Please provide all fields');
             return;
         }
         try {
-            // Send data to backend for updating team column
-            const response = await axios.post('http://127.0.0.1:5000/api/updateteamcolumns', {
+            // Send data to backend for updating series column
+            const response = await axios.post('http://127.0.0.1:5000/api/updateseriescolumns', {
                 columnName: selectedColumn,
-                id: teamId,
+                id: seriesId,
                 newValue: newValue
             });
             console.log(response.data);
-            setSuccess('Team updated successfully');
+            setSuccess('Series updated successfully');
             onClose(); // Close the popup after successful update
         } catch (error) {
-            console.error('Error updating team:', error);
-            setError('Failed to update team');
+            console.error('Error updating series:', error);
+            setError('Failed to update series');
         }
     };
 
     return (
         <div>
-            <h2>Update Team</h2>
+            <h2>Update Series</h2>
             <form onSubmit={handleSubmit}>
                 {error && <div style={{ color: 'red' }}>{error}</div>}
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
-                    <label>Team ID:</label>
-                    <input type="number" name="teamId" value={teamId} onChange={handleChange} />
+                    <label>Series ID:</label>
+                    <input type="number" name="seriesId" value={seriesId} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Column:</label>

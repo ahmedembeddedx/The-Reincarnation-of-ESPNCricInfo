@@ -203,65 +203,72 @@ BEGIN
 END;
 
 -- UPDATE TEAM
-CREATE PROCEDURE update_team
-    @_TeamID INT,
-    @_Name VARCHAR(30),
-    @_Abbreviation VARCHAR(3),
-    @_HomeGroundID INT,
-    @_Nick VARCHAR(30),
-    @_UpcomingFixtureID INT,
-    @_UpcomingSeriesID INT,
-    @_Wins INT,
-    @_Draws INT,
-    @_Loss INT,
-    @_RankingPoints INT
+CREATE PROCEDURE UpdateTeamColumn
+    @ColumnName NVARCHAR(100),
+    @ID INT,
+    @NewValue NVARCHAR(255)
 AS
 BEGIN
-    UPDATE TeamData
-    SET _Name = @_Name, _Abbreviation = @_Abbreviation, _HomeGroundID = @_HomeGroundID, _Nick = @_Nick, _UpcomingFixtureID = @_UpcomingFixtureID, _UpcomingSeriesID = @_UpcomingSeriesID, _Wins = @_Wins, _Draws = @_Draws, _Loss = @_Loss, _RankingPoints = @_RankingPoints
-    WHERE _TeamID = @_TeamID;
+    DECLARE @SQL NVARCHAR(MAX);
+
+    -- Constructing dynamic SQL to update the specified column
+    SET @SQL = '
+        UPDATE TeamData
+        SET ' + QUOTENAME(@ColumnName) + ' = @NewValue
+        WHERE _TeamID = @ID;';
+
+    -- Executing the dynamic SQL
+    EXEC sp_executesql @SQL,
+                       N'@NewValue NVARCHAR(255), @ID INT',
+                       @NewValue,
+                       @ID;
 END;
 
 -- UPDATE MATCH
-CREATE PROCEDURE update_match
-    @_FixtureID INT,
-    @_Team1ID INT,
-    @_Team2ID INT,
-    @_Date DATETIME,
-    @_VenueID INT
+CREATE PROCEDURE UpdateMatchColumn
+    @ColumnName NVARCHAR(100),
+    @ID INT,
+    @NewValue NVARCHAR(255)
 AS
 BEGIN
-    UPDATE FixtureData
-    SET _Team1ID = @_Team1ID, _Team2ID = @_Team2ID, _Date = @_Date, _VenueID = @_VenueID
-    WHERE _FixtureID = @_FixtureID;
+    DECLARE @SQL NVARCHAR(MAX);
+
+    -- Constructing dynamic SQL to update the specified column
+    SET @SQL = '
+        UPDATE FixtureData
+        SET ' + QUOTENAME(@ColumnName) + ' = @NewValue
+        WHERE _SeriesID = @ID;';
+
+    -- Executing the dynamic SQL
+    EXEC sp_executesql @SQL,
+                       N'@NewValue NVARCHAR(255), @ID INT',
+                       @NewValue,
+                       @ID;
 END;
+
 
 -- UPDATE SERIES
-CREATE PROCEDURE update_series
-    @_SeriesID INT,
-    @_Team1ID INT,
-    @_Team2ID INT,
-    @_Date DATETIME,
-    @_VenueID INT
+CREATE PROCEDURE UpdateMatchColumn
+    @ColumnName NVARCHAR(100),
+    @ID INT,
+    @NewValue NVARCHAR(255)
 AS
 BEGIN
-    UPDATE SeriesData
-    SET _Team1ID = @_Team1ID, _Team2ID = @_Team2ID, _Date = @_Date, _VenueID = @_VenueID
-    WHERE _SeriesID = @_SeriesID;
+    DECLARE @SQL NVARCHAR(MAX);
+
+    -- Constructing dynamic SQL to update the specified column
+    SET @SQL = '
+        UPDATE FixtureData
+        SET ' + QUOTENAME(@ColumnName) + ' = @NewValue
+        WHERE _FixtureID = @ID;';
+
+    -- Executing the dynamic SQL
+    EXEC sp_executesql @SQL,
+                       N'@NewValue NVARCHAR(255), @ID INT',
+                       @NewValue,
+                       @ID;
 END;
 
--- UPDATE NEWS
-CREATE PROCEDURE update_news
-    @_Headline VARCHAR(100),
-    @_Text VARCHAR(200),
-    @_UserID VARCHAR(30),
-    @_Date DATETIME
-AS
-BEGIN
-    UPDATE NewsData
-    SET _Headline = @_Headline, _Text = @_Text, _UserID = @_UserID
-    WHERE _Date = @_Date;
-END;
 
 -- DELETE PLAYER
 CREATE PROCEDURE delete_player

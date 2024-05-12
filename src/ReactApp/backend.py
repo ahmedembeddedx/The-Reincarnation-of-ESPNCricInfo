@@ -433,6 +433,7 @@ def fetch_team_column():
 def update_team():
     try:
         data = request.json
+        print(data)
         column_name = data.get('columnName')
         team_id = data.get('id')
         new_value = data.get('newValue')
@@ -446,6 +447,138 @@ def update_team():
         conn.rollback()
         return jsonify({'error': str(e)}), 400
     
+@app.route('/api/getseriescolumns', methods=['GET'])
+def fetch_series_column():
+    try:
+        # Get column names from PlayerData table
+        cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'SeriesData'")
+        columns = [row[0] for row in cursor.fetchall()]
+
+        # Return column names as JSON response
+        return jsonify({'columns': columns})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/updateseriescolumns',methods=['POST'])
+def update_series():
+    try:
+        data = request.json
+        print(data)
+        column_name = data.get('columnName')
+        team_id = data.get('id')
+        new_value = data.get('newValue')
+
+        # Execute the stored procedure to update the column
+        cursor.execute("EXEC UpdateSeriesColumn ?, ?, ?", (column_name, team_id, new_value))
+        conn.commit()
+
+        return jsonify({'message': 'Series column updated successfully'}), 201
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+
+@app.route('/api/getmatchcolumns', methods=['GET'])
+def fetch_match_column():
+    try:
+        # Get column names from PlayerData table
+        cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'FixtureData'")
+        columns = [row[0] for row in cursor.fetchall()]
+
+        # Return column names as JSON response
+        return jsonify({'columns': columns})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/updatematchcolumns',methods=['POST'])
+def update_match():
+    try:
+        data = request.json
+        print(data)
+        column_name = data.get('columnName')
+        team_id = data.get('id')
+        new_value = data.get('newValue')
+
+        # Execute the stored procedure to update the column
+        cursor.execute("EXEC UpdateMatchColumn ?, ?, ?", (column_name, team_id, new_value))
+        conn.commit()
+
+        return jsonify({'message': 'Series column updated successfully'}), 201
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400   
     
+
+
+
+@app.route('/api/deleteplayer',methods=['POST'])
+def delete_player():
+    try:
+        data = request.json
+        print(data)
+        player_id = data.get('id')
+        
+        cursor.execute("EXEC delete_player ?",player_id)
+        conn.commit()
+        return jsonify({'messege':'Player deleted successfully'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+    
+@app.route('/api/deleteteam',methods=['POST'])
+def delete_team():
+    try:
+        data = request.json
+        team_id = data.get('id')
+        
+        cursor.execute("EXEC delete_team ?",team_id)
+        conn.commit()
+        return jsonify({'messege':'team deleted successfully'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+    
+@app.route('/api/deleteseries',methods=['POST'])
+def delete_series():
+    try:
+        data = request.json
+        series_id = data.get('id')
+        
+        cursor.execute("EXEC delete_serues ?",series_id)
+        conn.commit()
+        return jsonify({'messege':'series deleted successfully'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+  
+  
+@app.route('/api/deletematch',methods=['POST'])
+def delete_match():
+    try:
+        data = request.json
+        match_id = data.get('id')
+        
+        cursor.execute("EXEC delete_match ?",match_id)
+        conn.commit()
+        return jsonify({'messege':'match deleted successfully'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+    
+@app.route('/api/deletenews',methods=['POST'])
+def delete_news():
+    try:
+        data = request.json
+        news_date = data.get('date')
+        print(data)
+        
+        cursor.execute("EXEC delete_news ?",news_date)
+        conn.commit()
+        return jsonify({'messege':'news deleted successfully'})
+    except Exception as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 400
+            
+        
+        
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
