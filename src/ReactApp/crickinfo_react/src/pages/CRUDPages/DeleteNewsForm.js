@@ -23,10 +23,11 @@ export default function DeleteNewsForm({ onClose }) {
             <input
                 type="date"
                 value={newsDate}
+                className='CrudInputs'
                 onChange={(e) => setNewsDate(e.target.value)}
             />
             <br/>
-            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
+            <button type="submit" onClick={handleDelete} className='b2' style={{fontSize: '15px'}}>Confirm Delete</button>
         </div>
     );
 }

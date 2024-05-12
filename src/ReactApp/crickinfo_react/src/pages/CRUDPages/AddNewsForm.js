@@ -33,13 +33,15 @@ export default function AddNewsForm({ onClose }) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label className='CrudLabels'>Headline:</label>
-                    <input type="text" value={headline} onChange={(e) => setHeadline(e.target.value)} required />
+                    <p></p>
+                    <input className='CrudInputs'type="text" style={{width: '90%', height:'100px'}} value={headline} onChange={(e) => setHeadline(e.target.value)} required />
                 </div>
                 <div>
                     <label className='CrudLabels'>Text:</label>
-                    <textarea value={text} onChange={(e) => setText(e.target.value)} required />
+                    <p></p>
+                    <input className='CrudInputs' style={{width: '90%', height:'100px'}}  value={text} onChange={(e) => setText(e.target.value)} required />
                 </div>
-                <button type="submit">Add News</button>
+                <button type="submit" className='b2'>Add News</button>
             </form>
         </div>
     );

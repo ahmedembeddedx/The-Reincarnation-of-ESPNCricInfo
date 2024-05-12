@@ -23,10 +23,11 @@ export default function DeletePlayerForm({ onClose }) {
             <input
                 type="text"
                 value={playerId}
+                className='CrudInputs'
                 onChange={(e) => setPlayerId(e.target.value)}
             />
             <br/>
-            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
+            <button type="submit" onClick={handleDelete} className='b2' style={{fontSize: '15px'}}>Confirm Delete</button>
         </div>
     );
 }

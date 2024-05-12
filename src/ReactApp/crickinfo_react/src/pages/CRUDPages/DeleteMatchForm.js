@@ -27,12 +27,13 @@ export default function DeleteMatchForm({ onClose }) {
                     <label className='CrudLabels'>Match ID</label>
                     <input
                         type="number"
+                        className='CrudInputs'
                         value={matchId}
                         onChange={(e) => setMatchId(e.target.value)}
                     />
                 </div>
                 <br/>
-                <button type="submit">Delete Match</button>
+                <button type="submit" onClick={handleSubmit} className='b2' style={{fontSize: '15px'}}>Confirm Delete</button>
             </form>
         </div>
     );

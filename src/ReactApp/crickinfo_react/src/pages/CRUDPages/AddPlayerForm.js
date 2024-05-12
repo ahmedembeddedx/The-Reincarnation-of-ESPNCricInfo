@@ -64,6 +64,7 @@ export default function AddPlayerForm({ onClose }) {
                             {key}:
                             <input
                                 type="text"
+                                className='CrudInputs'
                                 name={key}
                                 value={playerData[key]}
                                 onChange={handleInputChange}
@@ -72,7 +73,7 @@ export default function AddPlayerForm({ onClose }) {
                     </div>
                 ))}
                 {/* Add a submit button */}
-                <button type="submit">Add Player</button>
+                <button type="submit" className='b2'>Add Player</button>
             </form>
         </div>
     );

@@ -453,6 +453,8 @@ td.unique{
 }
 .CrudLabels{
     color: var(--greyish);
+    font-family: monospace;
+    font-weight: bold;
 }
 @keyframes fadeOut {
     from {
@@ -465,28 +467,15 @@ td.unique{
     }
 }
 
-/* Base button styles */
-button[type="submit"] {
-    padding: 10px 10px;
-    margin: 10px;
-    font-size: 16px;
+.CrudInputs
+{
     font-weight: bold;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Button focus effect */
-  button[type="submit"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
-  }
-  
+    margin: 5px;
+    font-family: monospace;
+    height: 25px;
+    width: 25%;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    padding-left: 10px;
+    border: 2px solid transparent;
+}

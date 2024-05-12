@@ -23,10 +23,11 @@ export default function DeleteTeamForm({ onClose }) {
             <input
                 type="text"
                 value={teamId}
+                className='CrudInputs'
                 onChange={(e) => setTeamId(e.target.value)}
             />
             <br/>
-            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
+            <button type="submit" onClick={handleDelete} className='b2' style={{fontSize: '15px'}}>Confirm Delete</button>
         </div>
     );
 }

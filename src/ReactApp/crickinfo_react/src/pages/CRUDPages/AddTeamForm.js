@@ -88,6 +88,7 @@ export default function AddTeamForm({ onClose }) {
                     <label className='CrudLabels'>Name:</label>
                     <input
                         type="text"
+                        className='CrudInputs'
                         name="_Name"
                         value={name}
                         onChange={handleInputChange}
@@ -98,6 +99,7 @@ export default function AddTeamForm({ onClose }) {
                     <input
                         type="text"
                         name="_TeamID"
+                        className='CrudInputs'
                         value={teamID}
                         onChange={handleInputChange}
                     />
@@ -106,6 +108,7 @@ export default function AddTeamForm({ onClose }) {
                     <label className='CrudLabels'>Home Ground ID:</label>
                     <input
                         type="text"
+                        className='CrudInputs'
                         name="_HomeGroundID"
                         value={homeGroundID}
                         onChange={handleInputChange}
@@ -115,6 +118,7 @@ export default function AddTeamForm({ onClose }) {
                     <label className='CrudLabels'>Abbreviation:</label>
                     <input
                         type="text"
+                        className='CrudInputs'
                         name="_Abbreviation"
                         value={abbreviation}
                         onChange={handleInputChange}
@@ -123,6 +127,7 @@ export default function AddTeamForm({ onClose }) {
                 <div>
                     <label className='CrudLabels'>Nickname:</label>
                     <input
+                        className='CrudInputs'
                         type="text"
                         name="_Nick"
                         value={nick}
@@ -133,6 +138,7 @@ export default function AddTeamForm({ onClose }) {
                     <label className='CrudLabels'>Upcoming Fixture ID:</label>
                     <input
                         type="text"
+                        className='CrudInputs'
                         name="_UpcomingFixtureID"
                         value={upcomingFixtureID}
                         onChange={handleInputChange}
@@ -144,6 +150,7 @@ export default function AddTeamForm({ onClose }) {
                         type="text"
                         name="_UpcomingSeriesID"
                         value={upcomingSeriesID}
+                        className='CrudInputs'
                         onChange={handleInputChange}
                     />
                 </div>
@@ -152,6 +159,7 @@ export default function AddTeamForm({ onClose }) {
                     <input
                         type="text"
                         name="_Wins"
+                        className='CrudInputs'
                         value={wins}
                         onChange={handleInputChange}
                     />
@@ -161,6 +169,7 @@ export default function AddTeamForm({ onClose }) {
                     <input
                         type="text"
                         name="_Draws"
+                        className='CrudInputs'
                         value={draws}
                         onChange={handleInputChange}
                     />
@@ -170,6 +179,7 @@ export default function AddTeamForm({ onClose }) {
                     <input
                         type="text"
                         name="_Loss"
+                        className='CrudInputs'
                         value={loss}
                         onChange={handleInputChange}
                     />
@@ -179,12 +189,13 @@ export default function AddTeamForm({ onClose }) {
                     <input
                         type="number"
                         name="_RankingPoints"
+                        className='CrudInputs'
                         value={rankingPoints}
                         onChange={handleInputChange}
                     />
                 </div>
                 <div>
-                    <button type="submit">Add Team</button>
+                    <button type="submit" className='b2'>Add Team</button>
                 </div>
             </form>
         </div>

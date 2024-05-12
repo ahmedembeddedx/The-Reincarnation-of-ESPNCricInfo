@@ -33,10 +33,11 @@ export default function DeleteSeriesForm({ onClose }) {
                     <input
                         type="number"
                         value={seriesId}
+                        className='CrudInputs'
                         onChange={(e) => setSeriesId(e.target.value)}
                     />
                 </div>
-                <button type="submit">Delete Series</button>
+                <button type="submit" onClick={handleSubmit} className='b2' style={{fontSize: '15px'}}>Confirm Delete</button>
             </form>
         </div>
     );

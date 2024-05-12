@@ -66,22 +66,22 @@ export default function UpdateSeriesForm({ onClose }) {
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
                     <label className='CrudLabels'>Series ID:</label>
-                    <input type="number" min={1} name="seriesId" value={seriesId} onChange={handleChange} />
+                    <input className='CrudInputs' type="number" min={1} name="seriesId" value={seriesId} onChange={handleChange} />
                 </div>
                 <div>
                     <label className='CrudLabels'>Column:</label>
-                    <select name="column" value={selectedColumn} onChange={handleChange}>
+                    <select className='CrudInputs' name="column" value={selectedColumn} onChange={handleChange}>
                         <option value="">Select Column</option>
                         {columns && columns.map((column, index) => (
-                            <option key={index} value={column}>{column}</option>
+                            <option className='CrudInputs' key={index} value={column}>{column}</option>
                         ))}
                     </select>
                 </div>
                 <div>
                     <label className='CrudLabels'>New Value:</label>
-                    <input type="text" name="newValue" value={newValue} onChange={handleChange} />
+                    <input className='CrudInputs' type="text" name="newValue" value={newValue} onChange={handleChange} />
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit" className='b2'>Update</button>
             </form>
         </div>
     );

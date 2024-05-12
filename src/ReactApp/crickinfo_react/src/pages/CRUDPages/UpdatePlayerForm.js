@@ -66,11 +66,11 @@ export default function UpdatePlayerForm({ onClose }) {
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
                     <label className='CrudLabels'>Player ID:</label>
-                    <input type="number" min={1} name="playerId" value={playerId} onChange={handleChange} />
+                    <input className='CrudInputs' type="number" min={1} name="playerId" value={playerId} onChange={handleChange} />
                 </div>
                 <div>
                     <label className='CrudLabels'>Column:</label>
-                    <select name="column" value={selectedColumn} onChange={handleChange}>
+                    <select className='CrudInputs' name="column" value={selectedColumn} onChange={handleChange}>
                         <option value="">Select Column</option>
                         {columns && columns.map((column, index) => (
                             <option key={index} value={column}>{column}</option>
@@ -79,9 +79,9 @@ export default function UpdatePlayerForm({ onClose }) {
             </div>
                 <div>
                     <label className='CrudLabels'>New Value:</label>
-                    <input type="text" name="newValue" value={newValue} onChange={handleChange} />
+                    <input className='CrudInputs' type="text" name="newValue" value={newValue} onChange={handleChange} />
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit" className='b2'>Update</button>
             </form>
         </div>
     );

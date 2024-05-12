@@ -148,15 +148,16 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '700px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
-                }}
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
+                }}                
             >
                 <div>
                     <button onClick={closeAddPlayerForm} id="exitButton">x</button>
@@ -173,15 +174,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '400px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeAddTeamForm} id="exitButton">x</button>
@@ -198,15 +201,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeAddSeriesForm} id="exitButton">x</button>
@@ -223,15 +228,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '250px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeAddMatchForm} id="exitButton">x</button>
@@ -248,15 +255,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeAddNewsForm} id="exitButton">x</button>
@@ -273,15 +282,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeUpdatePlayerForm} id="exitButton">x</button>
@@ -297,15 +308,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeUpdateTeamForm} id="exitButton">x</button>
@@ -321,15 +334,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeUpdateSeriesForm} id="exitButton">x</button>
@@ -344,15 +359,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <button onClick={closeUpdateMatchForm} id="exitButton">x</button>
                 <UpdateMatchForm onClose={closeUpdateMatchForm}/>
@@ -366,15 +383,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeDeletePlayerForm} id="exitButton">x</button>
@@ -390,15 +409,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeDeleteTeamForm} id="exitButton">x</button>
@@ -415,15 +436,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
+                
             >
                 <div>
                     <button onClick={closeDeleteSeriesForm} id="exitButton">x</button>
@@ -440,16 +463,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
-            >
+                            >
                 <div>
                     <button onClick={closeDeleteMatchForm} id="exitButton">x</button>
                     <DeleteMatchForm onClose={closeDeleteMatchForm} />
@@ -465,16 +489,17 @@ export default function Admin() {
                 contentStyle={{
                     padding: '20px',
                     fontFamily: 'monospace',
-                    width: '50%',
+                    width: '25%',
                     backgroundColor: 'var(--whitish)',
-                    height: '200px',
+                    height: '300px', // Set a fixed height
                     display: 'grid',
                     borderRadius: '10px',
                     fontSize: 'large',
                     margin: '1 auto',
-                    border: '3px solid black'
+                    border: '3px solid black',
+                    overflowY: 'auto' // Enable vertical scrolling
                 }}
-            >
+                            >
                 <div>
                     <button onClick={closeDeleteNewsForm} id="exitButton">x</button>
                     <DeleteNewsForm onClose={closeDeleteNewsForm} />

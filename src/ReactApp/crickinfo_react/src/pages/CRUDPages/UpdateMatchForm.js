@@ -66,11 +66,11 @@ export default function UpdateMatchForm({ onClose }) {
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
                     <label className='CrudLabels'>Match ID:</label>
-                    <input type="number" min={1} name="matchId" value={matchId} onChange={handleChange} />
+                    <input type="number" className='CrudInputs' min={1} name="matchId" value={matchId} onChange={handleChange} />
                 </div>
                 <div>
                     <label className='CrudLabels'>Column:</label>
-                    <select name="column" value={selectedColumn} onChange={handleChange}>
+                    <select name="column" className='CrudInputs' value={selectedColumn} onChange={handleChange}>
                         <option value="">Select Column</option>
                         {columns && columns.map((column, index) => (
                             <option key={index} value={column}>{column}</option>
@@ -79,9 +79,9 @@ export default function UpdateMatchForm({ onClose }) {
                 </div>
                 <div>
                     <label className='CrudLabels'>New Value:</label>
-                    <input type="text" name="newValue" value={newValue} onChange={handleChange} />
+                    <input type="text" className='CrudInputs' name="newValue" value={newValue} onChange={handleChange} />
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit" className='b2'>Update</button>
             </form>
         </div>
     );

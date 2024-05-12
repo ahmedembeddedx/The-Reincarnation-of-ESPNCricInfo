@@ -37,6 +37,7 @@ export default function AddSeriesForm({ onClose }) {
                 <div>
                     <label className='CrudLabels'>Series Name</label>
                     <input
+                        className='CrudInputs'
                         type="text"
                         value={seriesName}
                         onChange={(e) => setseriesName(e.target.value)}
@@ -46,6 +47,7 @@ export default function AddSeriesForm({ onClose }) {
                     <label className='CrudLabels'>StartDate</label>
                     <input
                         type="date"
+                        className='CrudInputs'
                         value={startDate}
                         onChange={(e) => setstartDate(e.target.value)}
                     />
@@ -54,6 +56,7 @@ export default function AddSeriesForm({ onClose }) {
                     <label className='CrudLabels'>Date</label>
                     <input
                         type="date"
+                        className='CrudInputs'
                         value={endDate}
                         onChange={(e) => setendDate(e.target.value)}
                     />
@@ -62,11 +65,12 @@ export default function AddSeriesForm({ onClose }) {
                     <label className='CrudLabels'>Venue ID</label>
                     <input
                         type="number"
+                        className='CrudInputs'
                         value={venueID}
                         onChange={(e) => setVenueID(e.target.value)}
                     />
                 </div>
-                <button type="submit">Add Series</button>
+                <button type="submit" className='b2'>Add Series</button>
             </form>
         </div>
     );
