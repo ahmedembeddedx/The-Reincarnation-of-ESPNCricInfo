@@ -37,7 +37,9 @@ export default function Players() {
         setIsPopupOpen(false);
         setSelectedPlayer(null);
     };
-
+    const renderCellValue = (value) => {
+        return value ? value : 'N/A';
+    };
     const filteredPlayers = players.filter(player =>
         player.PlayerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         player.PlayerRole.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -72,16 +74,16 @@ export default function Players() {
                         {filteredPlayers.map(player => (
                             <tr key={player.PlayerID}>
                                 <td className="hover-on-data" onClick={() => openPopupPage(player)}>
-                                    {player.PlayerName}
+                                {renderCellValue(player.PlayerName)}
                                 </td>
-                                <td>{player.PlayerID}</td>
-                                <td>{player.PlayerAge}</td>
-                                <td>{player.PlayerRole}</td>
-                                <td>{player.PlayerTeam}</td>
-                                <td>{player.PlayerMatches}</td>
-                                <td>{player.PlayerRuns}</td>
-                                <td>{player.PlayerWickets}</td>
-                            </tr>
+                                <td>{renderCellValue(player.PlayerID)}</td>
+                                <td>{renderCellValue(player.PlayerAge)}</td>
+                                <td>{renderCellValue(player.PlayerRole)}</td>
+                                <td>{renderCellValue(player.PlayerTeam)}</td>
+                                <td>{renderCellValue(player.PlayerMatches)}</td>
+                                <td>{renderCellValue(player.PlayerRuns)}</td>
+                                <td>{renderCellValue(player.PlayerWickets)}</td>
+                          </tr>
                         ))}
                     </tbody>
                 </table>
