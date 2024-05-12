@@ -73,11 +73,11 @@ export default function Teams() {
                         <tr>
                             <th>Team Name</th>
                             <th>Team ID</th>
-                            <th>Home Ground ID</th>
+                            <th>Home Ground</th>
                             <th>Abbreviation</th>
                             <th>Nickname</th>
-                            <th>Upcoming Fixture ID</th>
-                            <th>Upcoming Series ID</th>
+                            <th>Upcoming Fixture Date</th>
+                            <th>Upcoming Series Name</th>
                             <th>Wins</th>
                             <th>Draws</th>
                             <th>Losses</th>
