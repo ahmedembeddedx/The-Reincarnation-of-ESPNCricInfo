@@ -8,32 +8,45 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+server = 'ahmedhost.database.windows.net'
+database = 'ESPNCricInfo'
+username = 'ahmedsql'
+password = 'pancakes123$$'
+driver= '/opt/homebrew/lib/libmsodbcsql.17.dylib'
 
-def get_connection_string():
-    if platform.system() == "Windows":
-        return (
-            r'DRIVER={ODBC Driver 17 for SQL Server};'
-            r'SERVER=DESKTOP-50DO7J6;'
-            r'DATABASE=ESPNCricInfo;'
-            r'Trusted_Connection=yes;'
-        )
-    elif platform.system() == "Darwin":
-        return (
-            'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
-            ';SERVER=localhost,1433;' + 
-            ';UID=sa;' + 
-            ';PWD=dockerStrongPwd123;' +
-            ';database=ESPNCricInfo'
-        )
-    else:
-        raise ValueError("Unsupported platform")
+# Create a connection
+conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
-# Get the connection string based on the current platform
-conn_str = get_connection_string()
-
-# Connect to the database
-conn = pyodbc.connect(conn_str)
+# Create a cursor object
 cursor = conn.cursor()
+
+
+
+# def get_connection_string():
+#     if platform.system() == "Windows":
+#         return (
+#             r'DRIVER={ODBC Driver 17 for SQL Server};'
+#             r'SERVER=DESKTOP-50DO7J6;'
+#             r'DATABASE=ESPNCricInfo;'
+#             r'Trusted_Connection=yes;'
+#         )
+#     elif platform.system() == "Darwin":
+#         return (
+#             'DRIVER=/opt/homebrew/lib/libmsodbcsql.17.dylib' + 
+#             ';SERVER=localhost,1433;' + 
+#             ';UID=sa;' + 
+#             ';PWD=dockerStrongPwd123;' +
+#             ';database=ESPNCricInfo'
+#         )
+#     else:
+#         raise ValueError("Unsupported platform")
+
+# # Get the connection string based on the current platform
+# conn_str = get_connection_string()
+
+# # Connect to the database
+# conn = pyodbc.connect(conn_str)
+# cursor = conn.cursor()
 
 global_user_name = 'alicee'
 #login
