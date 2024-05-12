@@ -19,13 +19,14 @@ export default function DeletePlayerForm({ onClose }) {
     return (
         <div>
             <h3>Delete Player</h3>
-            <p className='CrudLabels'>Enter the Player ID:</p>
+            <label className='CrudLabels'>Enter the Player ID:</label>
             <input
                 type="text"
                 value={playerId}
                 onChange={(e) => setPlayerId(e.target.value)}
             />
-            <button onClick={handleDelete}>Confirm Delete</button>
+            <br/>
+            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
         </div>
     );
 }

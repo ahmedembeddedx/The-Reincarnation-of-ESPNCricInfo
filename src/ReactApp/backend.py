@@ -304,7 +304,7 @@ def add_series():
         # Extract series data from request body
         data = request.get_json()
         print(data)
-        SeriesName = data.get('SeriesName')
+        SeriesName = data.get('_SeriesName')
         EndDate = data.get('_EndDate')
         StartDate = data.get('_StartDate')
         _VenueID = data.get('_VenueID')
@@ -572,7 +572,7 @@ def delete_series():
         data = request.json
         series_id = data.get('id')
         
-        cursor.execute("EXEC delete_serues ?",series_id)
+        cursor.execute("EXEC delete_series ?",series_id)
         conn.commit()
         return jsonify({'messege':'series deleted successfully'})
     except Exception as e:

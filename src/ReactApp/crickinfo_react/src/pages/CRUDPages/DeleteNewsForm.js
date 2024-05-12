@@ -19,13 +19,14 @@ export default function DeleteNewsForm({ onClose }) {
     return (
         <div>
             <h3>Delete News</h3>
-            <p className='CrudLabels'>Enter the News Date:</p>
+            <label className='CrudLabels'>Enter the News Date:</label>
             <input
                 type="date"
                 value={newsDate}
                 onChange={(e) => setNewsDate(e.target.value)}
             />
-            <button onClick={handleDelete}>Confirm Delete</button>
+            <br/>
+            <button type="submit" onClick={handleDelete}>Confirm Delete</button>
         </div>
     );
 }

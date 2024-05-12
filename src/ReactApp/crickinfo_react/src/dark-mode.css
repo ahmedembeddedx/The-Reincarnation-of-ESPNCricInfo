@@ -464,3 +464,29 @@ td.unique{
         transform: scale(0.9);
     }
 }
+
+/* Base button styles */
+button[type="submit"] {
+    padding: 10px 10px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Button focus effect */
+  button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4);
+  }
+  

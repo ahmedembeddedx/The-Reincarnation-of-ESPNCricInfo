@@ -50,6 +50,7 @@ CREATE TABLE FixtureData
 CREATE TABLE SeriesData
 (
     _SeriesID INT IDENTITY(1,1),
+	_VenueID INT,
     _SeriesName NVARCHAR(255),
     _SeriesStartDate DATE,
     _SeriesEndDate DATE,
