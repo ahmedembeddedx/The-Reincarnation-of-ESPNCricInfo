@@ -19,7 +19,7 @@ export default function DeleteTeamForm({ onClose }) {
     return (
         <div>
             <h3>Delete Team</h3>
-            <p>Enter the Team ID:</p>
+            <label className='CrudLabels'>Enter the Team ID:</label>
             <input
                 type="text"
                 value={teamId}

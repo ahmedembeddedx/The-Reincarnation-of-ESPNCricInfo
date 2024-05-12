@@ -145,9 +145,21 @@ export default function Admin() {
                 onClose={closeAddPlayerForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '700px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeAddPlayerForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeAddPlayerForm} id="exitButton">x</button>
                     <AddPlayerForm onClose={closeAddPlayerForm} />
                 </div>
             </Popup>
@@ -158,9 +170,21 @@ export default function Admin() {
                 onClose={closeAddTeamForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '400px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeAddTeamForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeAddTeamForm} id="exitButton">x</button>
                     <AddTeamForm onClose={closeAddTeamForm} />
                 </div>
             </Popup>
@@ -171,9 +195,21 @@ export default function Admin() {
                 onClose={closeAddSeriesForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeAddSeriesForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeAddSeriesForm} id="exitButton">x</button>
                     <AddSeriesForm onClose={closeAddSeriesForm} />
                 </div>
             </Popup>
@@ -184,9 +220,21 @@ export default function Admin() {
                 onClose={closeAddMatchForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeAddMatchForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeAddMatchForm} id="exitButton">x</button>
                     <AddMatchForm onClose={closeAddMatchForm} />
                 </div>
             </Popup>
@@ -197,9 +245,21 @@ export default function Admin() {
                 onClose={closeAddNewsForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeAddNewsForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeAddNewsForm} id="exitButton">x</button>
                     <AddNewsForm onClose={closeAddNewsForm} />
                 </div>
             </Popup>
@@ -210,9 +270,21 @@ export default function Admin() {
                 onClose={closeUpdatePlayerForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeUpdatePlayerForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeUpdatePlayerForm} id="exitButton">x</button>
                     <UpdatePlayer onClose={closeUpdatePlayerForm} />
                 </div>
             </Popup>
@@ -222,9 +294,21 @@ export default function Admin() {
                 onClose={closeUpdateTeamForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeUpdateTeamForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeUpdateTeamForm} id="exitButton">x</button>
                     <UpdateTeamForm onClose={closeUpdateTeamForm}/>
                 </div>
             </Popup> 
@@ -234,9 +318,21 @@ export default function Admin() {
                 onClose={closeUpdateSeriesForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeUpdateSeriesForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeUpdateSeriesForm} id="exitButton">x</button>
                     <UpdateSeriesForm onClose={closeUpdateSeriesForm}/>
                 </div>
             </Popup>   
@@ -245,8 +341,20 @@ export default function Admin() {
                 onClose={closeUpdateMatchForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
-                <button onClick={closeUpdateMatchForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                <button onClick={closeUpdateMatchForm} id="exitButton">x</button>
                 <UpdateMatchForm onClose={closeUpdateMatchForm}/>
             </Popup>
 
@@ -255,9 +363,21 @@ export default function Admin() {
                 onClose={closeDeletePlayerForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeDeletePlayerForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeDeletePlayerForm} id="exitButton">x</button>
                     <DeletePlayerForm onClose={closeDeletePlayerForm}/>
                 </div> 
             </Popup>
@@ -267,9 +387,21 @@ export default function Admin() {
                 onClose={closeDeleteTeamForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeDeleteTeamForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeDeleteTeamForm} id="exitButton">x</button>
                     <DeleteTeamForm onClose={closeDeleteTeamForm} />
                 </div>
             </Popup>
@@ -280,9 +412,21 @@ export default function Admin() {
                 onClose={closeDeleteSeriesForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeDeleteSeriesForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeDeleteSeriesForm} id="exitButton">x</button>
                     <DeleteSeriesForm onClose={closeDeleteSeriesForm} />
                 </div>
             </Popup>
@@ -293,9 +437,21 @@ export default function Admin() {
                 onClose={closeDeleteMatchForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeDeleteMatchForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeDeleteMatchForm} id="exitButton">x</button>
                     <DeleteMatchForm onClose={closeDeleteMatchForm} />
                 </div>
             </Popup>
@@ -306,9 +462,21 @@ export default function Admin() {
                 onClose={closeDeleteNewsForm}
                 modal
                 closeOnDocumentClick
+                contentStyle={{
+                    padding: '20px',
+                    fontFamily: 'monospace',
+                    width: '50%',
+                    backgroundColor: 'var(--whitish)',
+                    height: '200px',
+                    display: 'grid',
+                    borderRadius: '10px',
+                    fontSize: 'large',
+                    margin: '1 auto',
+                    border: '3px solid black'
+                }}
             >
                 <div>
-                    <button onClick={closeDeleteNewsForm} style={{ position: 'absolute', top: '10px', left: '10px' }}>x</button>
+                    <button onClick={closeDeleteNewsForm} id="exitButton">x</button>
                     <DeleteNewsForm onClose={closeDeleteNewsForm} />
                 </div>
             </Popup>

@@ -19,7 +19,7 @@ export default function DeleteNewsForm({ onClose }) {
     return (
         <div>
             <h3>Delete News</h3>
-            <p>Enter the News Date:</p>
+            <p className='CrudLabels'>Enter the News Date:</p>
             <input
                 type="date"
                 value={newsDate}

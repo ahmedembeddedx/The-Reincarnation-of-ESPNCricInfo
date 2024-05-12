@@ -60,16 +60,16 @@ export default function UpdateTeamForm({ onClose }) {
 
     return (
         <div>
-            <h2>Update Team</h2>
+            <h3>Update Team</h3>
             <form onSubmit={handleSubmit}>
                 {error && <div style={{ color: 'red' }}>{error}</div>}
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
-                    <label>Team ID:</label>
-                    <input type="number" name="teamId" value={teamId} onChange={handleChange} />
+                    <label className='CrudLabels'>Team ID:</label>
+                    <input type="number" min={1} name="teamId" value={teamId} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Column:</label>
+                    <label className='CrudLabels'>Column:</label>
                     <select name="column" value={selectedColumn} onChange={handleChange}>
                         <option value="">Select Column</option>
                         {columns && columns.map((column, index) => (
@@ -78,7 +78,7 @@ export default function UpdateTeamForm({ onClose }) {
                     </select>
                 </div>
                 <div>
-                    <label>New Value:</label>
+                    <label className='CrudLabels'>New Value:</label>
                     <input type="text" name="newValue" value={newValue} onChange={handleChange} />
                 </div>
                 <button type="submit">Update</button>

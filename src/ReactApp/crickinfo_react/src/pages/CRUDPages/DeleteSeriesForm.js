@@ -29,7 +29,7 @@ export default function DeleteSeriesForm({ onClose }) {
             <h3>Delete Series</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Series ID</label>
+                    <label className='CrudLabels'>Series ID</label>
                     <input
                         type="number"
                         value={seriesId}

@@ -3,9 +3,9 @@ import axios from 'axios';
 
 export default function AddSeriesForm({ onClose }) {
     // State variables for form inputs
-    const [team1ID, setTeam1ID] = useState('');
-    const [team2ID, setTeam2ID] = useState('');
-    const [date, setDate] = useState('');
+    const [seriesName, setseriesName] = useState('');
+    const [startDate, setstartDate] = useState('');
+    const [endDate, setendDate] = useState('');
     const [venueID, setVenueID] = useState('');
 
     // Function to handle form submission
@@ -13,9 +13,9 @@ export default function AddSeriesForm({ onClose }) {
         e.preventDefault();
 
         const data = {
-            _Team1ID: team1ID,
-            _Team2ID: team2ID,
-            _Date: date,
+            _SeriesName: seriesName,
+            _StartDate: startDate,
+            _EndDate: endDate,
             _VenueID: venueID
         };
 
@@ -35,31 +35,31 @@ export default function AddSeriesForm({ onClose }) {
             <h3>Add Series</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Team 1 ID</label>
+                    <label className='CrudLabels'>Series Name</label>
                     <input
-                        type="number"
-                        value={team1ID}
-                        onChange={(e) => setTeam1ID(e.target.value)}
+                        type="text"
+                        value={seriesName}
+                        onChange={(e) => setseriesName(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Team 2 ID</label>
-                    <input
-                        type="number"
-                        value={team2ID}
-                        onChange={(e) => setTeam2ID(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Date</label>
+                    <label className='CrudLabels'>StartDate</label>
                     <input
                         type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
+                        value={startDate}
+                        onChange={(e) => setstartDate(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Venue ID</label>
+                    <label className='CrudLabels'>Date</label>
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setendDate(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label className='CrudLabels'>Venue ID</label>
                     <input
                         type="number"
                         value={venueID}

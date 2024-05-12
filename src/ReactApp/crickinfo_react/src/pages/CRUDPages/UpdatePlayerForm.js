@@ -60,16 +60,16 @@ export default function UpdatePlayerForm({ onClose }) {
 
     return (
         <div>
-            <h2>Update Player</h2>
+            <h3>Update Player</h3>
             <form onSubmit={handleSubmit}>
                 {error && <div style={{ color: 'red' }}>{error}</div>}
                 {success && <div style={{ color: 'green' }}>{success}</div>}
                 <div>
-                    <label>Player ID:</label>
-                    <input type="number" name="playerId" value={playerId} onChange={handleChange} />
+                    <label className='CrudLabels'>Player ID:</label>
+                    <input type="number" min={1} name="playerId" value={playerId} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Column:</label>
+                    <label className='CrudLabels'>Column:</label>
                     <select name="column" value={selectedColumn} onChange={handleChange}>
                         <option value="">Select Column</option>
                         {columns && columns.map((column, index) => (
@@ -78,7 +78,7 @@ export default function UpdatePlayerForm({ onClose }) {
                     </select>
             </div>
                 <div>
-                    <label>New Value:</label>
+                    <label className='CrudLabels'>New Value:</label>
                     <input type="text" name="newValue" value={newValue} onChange={handleChange} />
                 </div>
                 <button type="submit">Update</button>

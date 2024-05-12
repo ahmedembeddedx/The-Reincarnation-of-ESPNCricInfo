@@ -32,10 +32,10 @@ export default function AddMatchForm({ onClose }) {
 
     return (
         <div>
-            <h3>Add Series</h3>
+            <h3>Add Match</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Team 1 ID</label>
+                    <label className='CrudLabels'>Team 1 ID</label>
                     <input
                         type="number"
                         value={team1ID}
@@ -43,7 +43,7 @@ export default function AddMatchForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Team 2 ID</label>
+                    <label className='CrudLabels'>Team 2 ID</label>
                     <input
                         type="number"
                         value={team2ID}
@@ -51,7 +51,7 @@ export default function AddMatchForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Date</label>
+                    <label className='CrudLabels'>Date</label>
                     <input
                         type="date"
                         value={date}
@@ -59,14 +59,14 @@ export default function AddMatchForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Venue ID</label>
+                    <label className='CrudLabels'>Venue ID</label>
                     <input
                         type="number"
                         value={venueID}
                         onChange={(e) => setVenueID(e.target.value)}
                     />
                 </div>
-                <button type="submit">Add Series</button>
+                <button type="submit" >Add Series</button>
             </form>
         </div>
     );

@@ -451,7 +451,9 @@ td.unique{
         transform: scale(1);
     }
 }
-
+.CrudLabels{
+    color: var(--greyish);
+}
 @keyframes fadeOut {
     from {
         opacity: 1;
