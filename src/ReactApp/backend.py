@@ -79,8 +79,8 @@ def get_series_data():
                 _SeriesName AS SeriesName,
                 _SeriesStartDate AS SeriesStartDate,
                 _SeriesEndDate AS SeriesEndDate,
-                _SeriesVenue AS SeriesVenue
-            FROM SeriesData;
+                _Location AS SeriesVenue
+            FROM SeriesData join GroundData on _VenueID = _GroundID;
         '''
 
         cursor.execute(query)
@@ -304,15 +304,15 @@ def add_series():
         # Extract series data from request body
         data = request.get_json()
         print(data)
-        _Team1ID = data.get('_Team1ID')
-        _Team2ID = data.get('_Team2ID')
-        _Date = data.get('_Date')
+        SeriesName = data.get('SeriesName')
+        EndDate = data.get('_EndDate')
+        StartDate = data.get('_StartDate')
         _VenueID = data.get('_VenueID')
 
         # Execute the stored procedure to add the series
         cursor.execute(
             "EXEC add_series ?, ?, ?, ?",
-            (_Team1ID, _Team2ID, _Date, _VenueID)
+            (SeriesName, StartDate, EndDate, _VenueID)
         )
 
         # Commit the transaction

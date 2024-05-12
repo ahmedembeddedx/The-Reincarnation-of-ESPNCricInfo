@@ -60,7 +60,7 @@ export default function AddPlayerForm({ onClose }) {
                 {/* Render form inputs for each piece of player data */}
                 {Object.keys(playerData).map((key) => (
                     <div key={key}>
-                        <label>
+                        <label className='CrudLabels'>
                             {key}:
                             <input
                                 type="text"

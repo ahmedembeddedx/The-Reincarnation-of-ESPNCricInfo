@@ -82,10 +82,10 @@ export default function AddTeamForm({ onClose }) {
     // Render the form
     return (
         <div>
-            <h2>Add Team</h2>
+            <h3>Add Team</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Name:</label>
+                    <label className='CrudLabels'>Name:</label>
                     <input
                         type="text"
                         name="_Name"
@@ -94,7 +94,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Team ID:</label>
+                    <label className='CrudLabels'>Team ID:</label>
                     <input
                         type="text"
                         name="_TeamID"
@@ -103,7 +103,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Home Ground ID:</label>
+                    <label className='CrudLabels'>Home Ground ID:</label>
                     <input
                         type="text"
                         name="_HomeGroundID"
@@ -112,7 +112,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Abbreviation:</label>
+                    <label className='CrudLabels'>Abbreviation:</label>
                     <input
                         type="text"
                         name="_Abbreviation"
@@ -121,7 +121,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Nickname:</label>
+                    <label className='CrudLabels'>Nickname:</label>
                     <input
                         type="text"
                         name="_Nick"
@@ -130,7 +130,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Upcoming Fixture ID:</label>
+                    <label className='CrudLabels'>Upcoming Fixture ID:</label>
                     <input
                         type="text"
                         name="_UpcomingFixtureID"
@@ -139,7 +139,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Upcoming Series ID:</label>
+                    <label className='CrudLabels'>Upcoming Series ID:</label>
                     <input
                         type="text"
                         name="_UpcomingSeriesID"
@@ -148,7 +148,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Wins:</label>
+                    <label className='CrudLabels'>Wins:</label>
                     <input
                         type="text"
                         name="_Wins"
@@ -157,7 +157,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Draws:</label>
+                    <label className='CrudLabels'>Draws:</label>
                     <input
                         type="text"
                         name="_Draws"
@@ -166,7 +166,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Loss:</label>
+                    <label className='CrudLabels'>Loss:</label>
                     <input
                         type="text"
                         name="_Loss"
@@ -175,7 +175,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label>Ranking Points:</label>
+                    <label className='CrudLabels'>Ranking Points:</label>
                     <input
                         type="number"
                         name="_RankingPoints"

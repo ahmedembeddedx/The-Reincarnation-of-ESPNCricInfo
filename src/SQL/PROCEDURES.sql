@@ -156,14 +156,14 @@ END;
 
 -- ADD SERIES
 CREATE PROCEDURE add_series
-    @_Team1ID INT,
-    @_Team2ID INT,
-    @_Date DATETIME,
+    @_SeriesName VARCHAR(255),
+    @_StartDate DATETIME,
+    @_EndDate DATETIME,
     @_VenueID INT
 AS
 BEGIN
-    INSERT INTO SeriesData (_Team1ID, _Team2ID, _Date, _VenueID)
-    VALUES (@_Team1ID, @_Team2ID, @_Date, @_VenueID);
+    INSERT INTO SeriesData (_SeriesName, _SeriesStartDate, _SeriesEndDate, _VenueID)
+    VALUES (@_SeriesName, @_StartDate, @_EndDate, @_VenueID);
 END;
 
 -- ADD NEWS

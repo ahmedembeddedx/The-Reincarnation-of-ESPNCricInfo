@@ -24,7 +24,7 @@ export default function DeleteMatchForm({ onClose }) {
             <h3>Delete Match</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Match ID</label>
+                    <label className='CrudLabels'>Match ID</label>
                     <input
                         type="number"
                         value={matchId}

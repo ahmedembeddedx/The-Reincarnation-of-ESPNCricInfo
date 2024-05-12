@@ -19,7 +19,7 @@ export default function DeletePlayerForm({ onClose }) {
     return (
         <div>
             <h3>Delete Player</h3>
-            <p>Enter the Player ID:</p>
+            <p className='CrudLabels'>Enter the Player ID:</p>
             <input
                 type="text"
                 value={playerId}
