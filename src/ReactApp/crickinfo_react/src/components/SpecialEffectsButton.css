@@ -9,12 +9,12 @@
   cursor: pointer;
 }
 
-/* Balloon animation */
 .balloon {
   position: absolute;
   width: 40px;
   height: 60px;
-  background-color: yellow;
+  background-image: url('https://i.ibb.co/vcVcvWg/Screenshot-2024-05-12-at-8-55-59-PM.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+  background-size: cover;
   border-radius: 50%;
   bottom: 0;
   left: 50%;
