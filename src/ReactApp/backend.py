@@ -102,17 +102,24 @@ def get_team_data():
         SELECT 
             _Name AS TeamName,
             _TeamID AS TeamID,
-            _HomeGroundID AS HomeGroundID,
+            GroundData._Location AS HomeGroundID,
             _Abbreviation AS Abbreviation,
             _Nick AS Nickname,
-            _UpcomingFixtureID AS UpcomingFixtureID,
-            _UpcomingSeriesID AS UpcomingSeriesID,
+            FixtureData._Date AS UpcomingFixtureID,
+            SeriesData._SeriesName AS UpcomingSeriesID,
             _Wins AS Wins,
             _Draws AS Draws,
             _Loss AS Losses,
             _RankingPoints AS RankingPoints
-        FROM TeamData;
+        FROM TeamData
+        JOIN GroundData 
+        ON TeamData._HomeGroundID = GroundData._GroundID
+        JOIN FixtureData
+        ON TeamData._UpcomingFixtureID = FixtureData._FixtureID
+        JOIN SeriesData
+        ON TeamData._UpcomingSeriesID = SeriesData._SeriesID;
     '''
+
 
     # Execute the query
     cursor.execute(query)
