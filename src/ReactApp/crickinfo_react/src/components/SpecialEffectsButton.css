@@ -1,18 +1,24 @@
 /* SpecialEffectsButton.css */
 .special-effects-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  font-weight: bold;
   background-color: #fc5001;
   color: #fff;
-  border: none;
+  justify-content: right;
+  font-family: monospace;
+  font-size: 100%;
+  height: 30px;
+  width: 100%;
+  border: 3px solid transparent;
   border-radius: 5px;
-  cursor: pointer;
+  transition: 100ms ease-in;
 }
+
+
 
 .balloon {
   position: absolute;
-  width: 40px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url('https://i.ibb.co/vcVcvWg/Screenshot-2024-05-12-at-8-55-59-PM.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
   background-size: cover;
   border-radius: 50%;
