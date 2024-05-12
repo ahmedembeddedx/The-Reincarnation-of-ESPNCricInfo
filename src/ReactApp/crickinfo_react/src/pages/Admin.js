@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import SpecialEffectsButton from '../components/SpecialEffectButton';
 import AddPlayerForm from './CRUDPages/AddPlayerForm';
 import AddTeamForm from './CRUDPages/AddTeamForm';
 import AddSeriesForm from './CRUDPages/AddSeriesForm';
@@ -81,59 +82,63 @@ export default function Admin() {
     return (
         <div>
             <h3>Admin Options</h3>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button onClick={openAddPlayerForm}>Add Player</button>
-                        </td>
-                        <td>
-                            <button onClick={openAddTeamForm}>Add Team</button>
-                        </td>
-                        <td>
-                            <button onClick={openAddSeriesForm}>Add Series</button>
-                        </td>
-                        <td>
-                            <button onClick={openAddMatchForm}>Add Match</button>
-                        </td>
-                        <td>
-                            <button onClick={openAddNewsForm}>Add News</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button onClick={openUpdatePlayerForm}>Update Player</button> {/* No function call here */}
-                        </td>
-                        <td>
-                            <button onClick={openUpdateTeamForm}>Update Team</button>
-                        </td>
-                        <td>
-                            <button onClick={openUpdateSeriesForm}>Update Series</button>
-                        </td>
-                        <td>
-                            <button onClick={openUpdateMatchForm}>Update Match</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button onClick={openDeletePlayerForm}>Delete Player</button>
-                        </td>
-                        <td>
-                            <button onClick={openDeleteTeamForm}>Delete Team</button>
-                        </td>
-                        <td>
-                            <button onClick={openDeleteSeriesForm}>Delete Series</button>
-                        </td>
-                        <td>
-                            <button onClick={openDeleteMatchForm}>Delete Match</button>
-                        </td>
-                        <td>
-                            <button onClick={openDeleteNewsForm}>Delete News</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <div id='FormTable'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button onClick={openAddPlayerForm} className='b4'>Add Player</button>
+                            </td>
+                            <td>
+                                <button onClick={openAddTeamForm} className='b4'>Add Team</button>
+                            </td>
+                            <td>
+                                <button onClick={openAddSeriesForm} className='b4'>Add Series</button>
+                            </td>
+                            <td>
+                                <button onClick={openAddMatchForm} className='b4'>Add Match</button>
+                            </td>
+                            <td>
+                                <button onClick={openAddNewsForm} className='b4'>Add News</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onClick={openUpdatePlayerForm} className='b4'>Update Player</button> {/* No function call here */}
+                            </td>
+                            <td>
+                                <button onClick={openUpdateTeamForm} className='b4'>Update Team</button>
+                            </td>
+                            <td>
+                                <button onClick={openUpdateSeriesForm} className='b4'>Update Series</button>
+                            </td>
+                            <td>
+                                <button onClick={openUpdateMatchForm} className='b4'>Update Match</button>
+                            </td>
+                            <td>
+                                <SpecialEffectsButton>Mystery Button</SpecialEffectsButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onClick={openDeletePlayerForm} className='b5' style={{backgroundColor :'#cc0000',color:'#C2C2C2'}}>Delete Player</button>
+                            </td>
+                            <td>
+                                <button onClick={openDeleteTeamForm} className='b5' style={{backgroundColor :'#cc0000',color:'#C2C2C2'}}>Delete Team</button>
+                            </td>
+                            <td>
+                                <button onClick={openDeleteSeriesForm} className='b5' style={{backgroundColor :'#cc0000',color:'#C2C2C2'}}>Delete Series</button>
+                            </td>
+                            <td>
+                                <button onClick={openDeleteMatchForm} className='b5' style={{backgroundColor :'#cc0000',color:'#C2C2C2'}}>Delete Match</button>
+                            </td>
+                            <td>
+                                <button onClick={openDeleteNewsForm} className='b5' style={{backgroundColor :'#cc0000',color:'#C2C2C2'}}>Delete News</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             {/* Popup for adding a player */}
             <Popup
                 open={isAddPlayerFormOpen}
