@@ -67,6 +67,33 @@ def authenticate():
         return jsonify({'success': False, 'message': 'Invalid credentials'})
 
 
+#series
+@app.route('/api/series', methods=['GET'])
+def get_series_data():
+    try:
+
+        query = '''
+            SELECT 
+                _SeriesID AS SeriesID,
+                _VenueID AS VenueID,
+                _SeriesName AS SeriesName,
+                _SeriesStartDate AS SeriesStartDate,
+                _SeriesEndDate AS SeriesEndDate,
+                _SeriesVenue AS SeriesVenue
+            FROM SeriesData;
+        '''
+
+        cursor.execute(query)
+        data = cursor.fetchall()
+
+        columns = [column[0] for column in cursor.description]
+        data_list = [dict(zip(columns, row)) for row in data]
+
+
+        return jsonify(data_list)
+    except Exception as e:
+        print("Error fetching series data:", e)
+        return jsonify([])
 
 #Team
 @app.route('/api/teams', methods=['GET'])
@@ -198,6 +225,8 @@ def get_Playerdata():
     columns = [column[0] for column in cursor.description]
     data_list = [dict(zip(columns, row)) for row in data]
     return jsonify(data_list)
+
+
 
 @app.route('/api/addplayers',methods=['POST']) 
 def insert_player():
@@ -578,7 +607,8 @@ def delete_news():
         conn.rollback()
         return jsonify({'error': str(e)}), 400
             
-        
+            
+                
         
 if __name__ == '__main__':
     app.run(port=5000,debug=True)

@@ -1,54 +1,80 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Series() {
-  return (
-    <div>
-      <h3>Series Data</h3>
-      <input type="text" id="search" placeholder="Find Series..." />
-      <button id="searchButton">Search</button>
-        <div id="FormTable">
+    const [seriesData, setSeriesData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
-            <table>
-                <tr>
-                    <th>Series ID</th>
-                    <th>Series Name</th>
-                    <th>Series Start Date</th>
-                    <th>Series End Date</th>
-                    <th>Series Venue</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>World Cup 2024</td>
-                    <td>2024-10-10</td>
-                    <td>2024-11-10</td>
-                    <td>Dubai</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Asia Cup 2024</td>
-                    <td>2024-12-10</td>
-                    <td>2025-01-10</td>
-                    <td>India</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>PSL 2024</td>
-                    <td>2024-2-14</td>
-                    <td>2024-03-10</td>
-                    <td>Pakistan</td>
-                </tr>
+    useEffect(() => {
+        fetchSeriesData();
+    }, []);
 
-            </table>
+    const fetchSeriesData = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/api/series');
+            setSeriesData(response.data);
+        } catch (error) {
+            console.error('Error fetching series data:', error);
+        }
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredSeries = seriesData.filter(series =>
+        series.SeriesName.toLowerCase().includes(searchQuery.toLowerCase())||
+        series.SeriesVenue.toLowerCase().includes(searchQuery.toLowerCase())||
+        series.SeriesStartDate.toLowerCase().includes(searchQuery.toLowerCase())||
+        series.SeriesEndDate.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
+        <div>
+            <h3>Series Data</h3>
+            <input
+                type="text"
+                id="search"
+                placeholder="Find Series..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+            />
+            <div id="FormTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Series Name</th>
+                            <th>Series ID</th>
+                            <th>Venue ID</th>
+                            <th>Series Start Date</th>
+                            <th>Series End Date</th>
+                            <th>Series Venue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredSeries.map(series => (
+                            <tr key={series.SeriesID}>
+                                <td>{series.SeriesName}</td>
+                                <td>{series.SeriesID}</td>
+                                <td>{series.VenueID}</td>
+                                <td>{series.SeriesStartDate}</td>
+                                <td>{series.SeriesEndDate}</td>
+                                <td>{series.SeriesVenue}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <br />
+            <hr />
+            <footer>
+                <p>ESPNCricInfo Reincarnated</p>
+                <p>Copyright 2024. All Rights Reserved.</p>
+                <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/">
+                    <img src="https://cdn-icons-png.freepik.com/512/919/919847.png" alt="GitHub" height="40"/>
+                </a>
+            </footer>
         </div>
-
-        <br/>
-        <br/>
-        <hr/>
-        <footer>
-            <p>ESPNCricInfo Reincarnated</p>
-            <p>Copyright 2024. All Rights Reserved.</p>
-            <a href="https://github.com/ahmedembeddedx/the-reincarnation-of-espncricinfo/"><img src="https://cdn-icons-png.freepik.com/512/919/919847.png?ga=GA1.1.1925836337.1709750745&" alt="" height="40"/></a>
-        </footer>
-    </div>
-  )
+    );
 }

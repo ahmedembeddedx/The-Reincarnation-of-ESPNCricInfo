@@ -66,15 +66,13 @@ VALUES
 (8, 3, '2024-04-05 13:00:00', 2);
 
 -- SeriesData
-INSERT INTO SeriesData (_Team1ID, _Team2ID, _Date, _VenueID) 
+INSERT INTO SeriesData (_VenueID,_SeriesName, _SeriesStartDate, _SeriesEndDate, _SeriesVenue) 
 VALUES 
-(1, 2, '2024-04-01 13:00:00', 3),
-(3, 4, '2024-04-10 14:00:00', 1),
-(5, 6, '2024-04-12 12:00:00', 4),
-(7, 8, '2024-04-15 15:30:00', 7),
-(10, 9, '2024-04-18 11:00:00', 8),
-(1, 4, '2024-04-22 14:00:00', 10),
-(8, 3, '2024-04-25 10:30:00', 1);
+(1,'Ashes Test Series', '2024-07-01', '2024-08-15', 'Lord''s Cricket Ground'),
+    (2,'Indian Premier League', '2024-04-01', '2024-05-30', 'Wankhede Stadium'),
+    (3,'Big Bash League', '2024-12-15', '2025-01-30', 'Melbourne Cricket Ground'),
+    (1,'T20 World Cup', '2024-10-15', '2024-11-15', 'Eden Gardens'),
+    (3,'Pakistan Super League', '2025-02-01', '2025-03-15', 'Gaddafi Stadium');
 
 
 -- TeamData

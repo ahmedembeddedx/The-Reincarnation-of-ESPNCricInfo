@@ -50,10 +50,10 @@ CREATE TABLE FixtureData
 CREATE TABLE SeriesData
 (
     _SeriesID INT IDENTITY(1,1),
-    _Team1ID INT NOT NULL,
-    _Team2ID INT NOT NULL,
-    _Date DATETIME,
-    _VenueID INT,
+    _SeriesName NVARCHAR(255),
+    _SeriesStartDate DATE,
+    _SeriesEndDate DATE,
+    _SeriesVenue NVARCHAR(255),
     PRIMARY KEY (_SeriesID),
     FOREIGN KEY (_VenueID) REFERENCES GroundData(_GroundID) ON DELETE SET NULL
 );
@@ -134,10 +134,6 @@ ADD CONSTRAINT CHK_IsAdmin CHECK (_IsAdmin IN (0, 1));
 --FixtureData--
 ALTER TABLE FixtureData
 ADD CONSTRAINT team1team2unique UNIQUE (_Team1ID,_Team2ID);
-
---SeriesData Table--
-ALTER TABLE SeriesData
-ADD CONSTRAINT steam1team2unique UNIQUE (_Team1ID,_Team2ID);
 
 --TeamData Table--
 ALTER TABLE	TeamData
