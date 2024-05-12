@@ -31,7 +31,6 @@ export default function DeleteMatchForm({ onClose }) {
                         onChange={(e) => setMatchId(e.target.value)}
                     />
                 </div>
-                <br/>
                 <button type="submit">Delete Match</button>
             </form>
         </div>
