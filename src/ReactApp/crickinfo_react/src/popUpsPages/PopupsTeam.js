@@ -28,11 +28,11 @@ const PopupsTeam = ({ team }) => {
                         <td className="unique">{displayValue(team.Nickname)}</td>
                     </tr>
                     <tr>
-                        <td className="unique"><strong>Upcoming Fixture ID</strong></td>
+                        <td className="unique"><strong>Upcoming Fixture</strong></td>
                         <td className="unique">{displayValue(team.UpcomingFixtureID)}</td>
                     </tr>
                     <tr>
-                        <td className="unique"><strong>Upcoming Series ID</strong></td>
+                        <td className="unique"><strong>Upcoming Series</strong></td>
                         <td className="unique">{displayValue(team.UpcomingSeriesID)}</td>
                     </tr>
                     <tr>
