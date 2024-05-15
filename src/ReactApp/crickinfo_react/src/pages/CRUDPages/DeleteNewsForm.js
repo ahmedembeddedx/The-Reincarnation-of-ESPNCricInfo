@@ -6,22 +6,20 @@ export default function DeleteNewsForm({ onClose }) {
 
     const handleDelete = async () => {
         try {
-            // Send a POST request to delete the news
             await axios.post('/api/deletenews', { date: newsDate });
-            // Notify the user or close the form
             onClose();
         } catch (error) {
             console.error('Error deleting news:', error);
-            // Handle the error
         }
     };
 
     return (
         <div>
             <h3>Delete News</h3>
-            <label className='CrudLabels'>Enter the News Date:</label>
+            <label className='CrudLabels'>Enter the News' Date-Time:</label>
             <input
-                type="date"
+                style={{width: '70%'}}
+                type="datetime-local"
                 value={newsDate}
                 className='CrudInputs'
                 onChange={(e) => setNewsDate(e.target.value)}

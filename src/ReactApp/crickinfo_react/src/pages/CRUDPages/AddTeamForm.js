@@ -195,7 +195,7 @@ export default function AddTeamForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <button type="submit" className='b2'>Add Team</button>
+                    <button type="submit" style={{fontSize: '15px'}} className='b2'>Add Team</button>
                 </div>
             </form>
         </div>

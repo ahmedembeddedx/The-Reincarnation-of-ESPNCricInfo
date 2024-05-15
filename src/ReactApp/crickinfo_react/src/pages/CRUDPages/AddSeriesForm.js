@@ -35,7 +35,7 @@ export default function AddSeriesForm({ onClose }) {
             <h3>Add Series</h3>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label className='CrudLabels'>Series Name</label>
+                    <label className='CrudLabels'>Series Name: </label>
                     <input
                         className='CrudInputs'
                         type="text"
@@ -44,25 +44,27 @@ export default function AddSeriesForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label className='CrudLabels'>StartDate</label>
+                    <label className='CrudLabels'>Start Date: </label>
                     <input
                         type="date"
+                        style={{width: '50%'}}
                         className='CrudInputs'
                         value={startDate}
                         onChange={(e) => setstartDate(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label className='CrudLabels'>Date</label>
+                    <label className='CrudLabels'>Ending Date: </label>
                     <input
                         type="date"
+                        style={{width: '50%'}}
                         className='CrudInputs'
                         value={endDate}
                         onChange={(e) => setendDate(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label className='CrudLabels'>Venue ID</label>
+                    <label className='CrudLabels'>Venue ID: </label>
                     <input
                         type="number"
                         className='CrudInputs'
@@ -70,7 +72,7 @@ export default function AddSeriesForm({ onClose }) {
                         onChange={(e) => setVenueID(e.target.value)}
                     />
                 </div>
-                <button type="submit" className='b2'>Add Series</button>
+                <button type="submit" style={{fontSize: '15px'}} className='b2'>Add Series</button>
             </form>
         </div>
     );

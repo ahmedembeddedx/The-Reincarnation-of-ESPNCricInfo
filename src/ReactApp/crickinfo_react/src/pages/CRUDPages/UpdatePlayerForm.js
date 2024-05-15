@@ -69,19 +69,19 @@ export default function UpdatePlayerForm({ onClose }) {
                     <input className='CrudInputs' type="number" min={1} name="playerId" value={playerId} onChange={handleChange} />
                 </div>
                 <div>
-                    <label className='CrudLabels'>Column:</label>
-                    <select className='CrudInputs' name="column" value={selectedColumn} onChange={handleChange}>
-                        <option value="">Select Column</option>
+                    <label className='CrudLabels'>Attribute:</label>
+                    <select style={{width:'50%'}} className='CrudInputs' name="column" value={selectedColumn} onChange={handleChange}>
+                        <option value="">Attribute</option>
                         {columns && columns.map((column, index) => (
                             <option key={index} value={column}>{column}</option>
                         ))}
                     </select>
             </div>
                 <div>
-                    <label className='CrudLabels'>New Value:</label>
+                    <label className='CrudLabels'>Updated Attribute:</label>
                     <input className='CrudInputs' type="text" name="newValue" value={newValue} onChange={handleChange} />
                 </div>
-                <button type="submit" className='b2'>Update</button>
+                <button type="submit"style={{fontSize: '15px'}}  className='b2'>Update Player</button>
             </form>
         </div>
     );

@@ -72,8 +72,7 @@ export default function AddPlayerForm({ onClose }) {
                         </label>
                     </div>
                 ))}
-                {/* Add a submit button */}
-                <button type="submit" className='b2'>Add Player</button>
+                <button type="submit" style={{fontSize: '15px'}} className='b2'>Add Player</button>
             </form>
         </div>
     );

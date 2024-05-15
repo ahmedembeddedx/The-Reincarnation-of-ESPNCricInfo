@@ -69,19 +69,19 @@ export default function UpdateMatchForm({ onClose }) {
                     <input type="number" className='CrudInputs' min={1} name="matchId" value={matchId} onChange={handleChange} />
                 </div>
                 <div>
-                    <label className='CrudLabels'>Column:</label>
-                    <select name="column" className='CrudInputs' value={selectedColumn} onChange={handleChange}>
-                        <option value="">Select Column</option>
+                    <label className='CrudLabels'>Attribute:</label>
+                    <select name="column" style={{width: '50%'}} className='CrudInputs' value={selectedColumn} onChange={handleChange}>
+                        <option value="">Attribute</option>
                         {columns && columns.map((column, index) => (
                             <option key={index} value={column}>{column}</option>
                         ))}
                     </select>
                 </div>
                 <div>
-                    <label className='CrudLabels'>New Value:</label>
+                    <label className='CrudLabels'>Updated Attribute:</label>
                     <input type="text" className='CrudInputs' name="newValue" value={newValue} onChange={handleChange} />
                 </div>
-                <button type="submit" className='b2'>Update</button>
+                <button type="submit" style={{fontSize: '15px'}} className='b2'>Update Match</button>
             </form>
         </div>
     );
