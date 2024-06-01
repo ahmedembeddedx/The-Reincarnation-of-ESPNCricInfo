@@ -505,7 +505,9 @@ export default function Admin() {
                     <DeleteNewsForm onClose={closeDeleteNewsForm} />
                 </div>
             </Popup>
-
+            <br />
+            <br />
+            <hr />
             <footer>
                 <p>ESPNCricInfo Reincarnated</p>
                 <p>Copyright 2024. All Rights Reserved.</p>

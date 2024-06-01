@@ -12,9 +12,7 @@ CORS(app)
 server = 'ahmedhost.database.windows.net'
 database = 'ESPNCricInfo'
 username = 'ahmedsql'
-password = getpass("Enter database password to enable server: ")
-
-#password -> "pancakes123$$"
+password = "pancakes123$$"
 
 if platform.system() == 'Windows':
     driver = '{ODBC Driver 17 for SQL Server}'
