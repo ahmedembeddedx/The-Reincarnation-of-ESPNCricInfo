@@ -4,6 +4,7 @@ import pyodbc
 from werkzeug.security import check_password_hash, generate_password_hash
 import platform
 from datetime import datetime
+from getpass import getpass
 
 app = Flask(__name__)
 CORS(app)
@@ -11,8 +12,14 @@ CORS(app)
 server = 'ahmedhost.database.windows.net'
 database = 'ESPNCricInfo'
 username = 'ahmedsql'
-password = 'pancakes123$$'
-driver= '/opt/homebrew/lib/libmsodbcsql.17.dylib'
+password = getpass("Enter database password to enable server: ")
+
+#password -> "pancakes123$$"
+
+if platform.system() == 'Windows':
+    driver = '{ODBC Driver 17 for SQL Server}'
+else:
+    driver = '/opt/homebrew/lib/libmsodbcsql.17.dylib'
 
 # Create a connection
 conn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
@@ -34,7 +41,6 @@ def authenticate():
     cursor.execute('EXEC GetUserDetails @username = ?, @password = ?', (username, password))
     result = cursor.fetchone()
     global_user_name = result[0]
-    print(username, password)
 
     if result:
 
@@ -122,7 +128,6 @@ def add_team():
     try:
         # Extract team data from request body
         data = request.get_json()
-        print(data)
         _Name = data.get('_Name')
         _Abbreviation = data.get('_Abbreviation')
         _HomeGroundID = data.get('_HomeGroundID')
@@ -296,7 +301,6 @@ def add_series():
     try:
         # Extract series data from request body
         data = request.get_json()
-        print(data)
         SeriesName = data.get('_SeriesName')
         EndDate = data.get('_EndDate')
         StartDate = data.get('_StartDate')
@@ -325,7 +329,6 @@ def add_match():
     try:
         # Extract match data from the request body
         data = request.get_json()
-        print(data)
         team1_id = data.get('_Team1ID')
         team2_id = data.get('_Team2ID')
         date = data.get('_Date')
@@ -365,7 +368,6 @@ def fetch_news_data():
     cursor = conn.execute(query)
     news_rows = cursor.fetchall()
     
-    print(news_rows)
     # Convert the rows to a list of dictionaries
     news_data = []
     for row in news_rows:
@@ -383,11 +385,9 @@ def add_news():
     try:
         # Extract news data from request body
         data = request.get_json()
-        print(data)
         headline = data.get('_Headline')
         text = data.get('_Text')
         user_id = global_user_name
-        print(user_id)
         
         
 
@@ -455,7 +455,6 @@ def fetch_team_column():
 def update_team():
     try:
         data = request.json
-        print(data)
         column_name = data.get('columnName')
         team_id = data.get('id')
         new_value = data.get('newValue')
@@ -485,7 +484,6 @@ def fetch_series_column():
 def update_series():
     try:
         data = request.json
-        print(data)
         column_name = data.get('columnName')
         team_id = data.get('id')
         new_value = data.get('newValue')
@@ -515,7 +513,6 @@ def fetch_match_column():
 def update_match():
     try:
         data = request.json
-        print(data)
         column_name = data.get('columnName')
         team_id = data.get('id')
         new_value = data.get('newValue')
@@ -536,7 +533,6 @@ def update_match():
 def delete_player():
     try:
         data = request.json
-        print(data)
         player_id = data.get('id')
         
         cursor.execute("EXEC delete_player ?",player_id)
@@ -591,7 +587,6 @@ def delete_news():
     try:
         data = request.json
         news_date = data.get('date')
-        print(data)
         
         cursor.execute("EXEC delete_news ?",news_date)
         conn.commit()
