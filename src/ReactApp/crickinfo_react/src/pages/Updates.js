@@ -50,16 +50,16 @@ export default function Updates() {
             />
             <div id="FormTable">
                 {/* Map through the filtered news data and render each news item */}
-                <table>
-                    <tbody style={{textAlign: 'right'}}>
+                <table> 
+                    <tbody  style={{textAlign: 'center'}}>
                         {filteredNewsData.map((newsItem, index) => (
-                            <tr key={index}>
+                            <tr key={index}  style={{border: '3px var(--greyish)'}}>
                                 <td style={{textAlign: 'left'}}>
                                     <h2>{newsItem.headline}</h2>
                                     <p className="news">{newsItem.text}</p>
                                     <div style={{fontSize: 'small', textDecoration: 'underline'}}>
-                                        <p><strong> {newsItem.date}</strong></p>
-                                        <p><strong>@{newsItem.playername}</strong></p>
+                                        <p style={{textAlign: 'right'}}><strong > {newsItem.date}</strong></p>
+                                        <p style={{textAlign: 'right'}}><strong>@{newsItem.playername}</strong></p>
                                     </div>
                                 </td>
                             </tr>
